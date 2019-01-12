@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+$black: #0000;
+$white: #ffff;
+body {
+    margin: auto;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode, Geneva, Verdana, sans-serif';
+}
+
+.list-2-buttons {
+    .ui-picklist-target-controls,
+    .ui-picklist-source-controls,
+    .ui-picklist-buttons>.ui-picklist-buttons-cell>button[icon="pi pi-angle-double-right"],
+    .ui-picklist-buttons>.ui-picklist-buttons-cell>button[icon="pi pi-angle-double-left"] {
+        display: none;
+    }
+}
+
+.not-valid>.ui-fileupload,
+.not-valid>.ui-picklist>.ui-picklist-listwrapper,
+input.not-valid {
+    border: 1px solid red !important;
+}
