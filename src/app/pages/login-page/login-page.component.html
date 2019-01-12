@@ -1,0 +1,34 @@
+<div class="p-grid">
+    <div class="p-col-fixed centered error-message-container">
+      <div class="p-grid">
+        <div class="p-col-12">
+          <p-messages></p-messages>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="login-container">
+    <p-card title="Login">
+      <div class="ui-contents">
+        <div class="ui-inputgroup">
+          <label class="ui-inputgroup-label" for="email">Email:</label>
+          <div class="ui-inputgroup-item">
+            <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+            <input class="input" data-test="login-form-email" type="text" pInputText placeholder="Username" [(ngModel)]="user.email">
+          </div>
+        </div>
+        <div class="ui-inputgroup">
+          <label class="ui-inputgroup-label" for="password">Password:</label>
+          <div class="ui-inputgroup-item">
+            <span class="ui-inputgroup-addon"><i class="fa fa-key"></i></span>
+            <input class="input" data-test="login-form-password" type="password" pInputText placeholder="Password" [(ngModel)]="user.password"/>
+          </div>
+        </div>
+  
+        <button pButton class="login-button" data-test="login-form-button" (click)="doLogin(user.email, user.password)" type="button"
+          label="Login"></button>
+      </div>
+    </p-card>
+  </div>
+  

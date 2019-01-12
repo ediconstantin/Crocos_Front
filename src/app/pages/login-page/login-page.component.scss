@@ -1,0 +1,60 @@
+.login-container {
+    padding: 50px;
+  
+    .ui-contents {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .ui-inputgroup {
+      display: flex;
+      flex-direction: column;
+      margin: 10px;
+    }
+  
+    .ui-inputgroup-label {
+      margin: 5px 0px;
+    }
+  
+    .ui-inputgroup-item {
+      max-width: 300vh;
+      width: 50vh;
+    }
+  
+    ::ng-deep .ui-card {
+      max-width: 450px;
+      margin: 0 auto;
+    }
+  
+    ::ng-deep .ui-card-title {
+      text-align: center;
+    }
+  
+    .login-button {
+      margin: 5px;
+      align-self: flex-end;
+    }
+  
+    .input {
+      max-width: 100%;
+      width: 75%;
+    }
+  }
+  
+  .error-message-container{
+    ::ng-deep .ui-messages{
+      padding: 10px 50px 10px 10px;
+    }
+  
+    ::ng-deep .ui-messages-icon{
+      display: none;
+    }
+  }
+  
+  .p-col-fixed.centered {
+    margin: 0 auto 8px;
+    &.control-buttons__edit{
+      margin-top: 30px;
+    }
+  }
+  
