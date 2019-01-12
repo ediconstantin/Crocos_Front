@@ -19,7 +19,7 @@ import { SelectQuizComponent } from './components/select-quiz/select-quiz.compon
 
 // Services
 import { LoginService } from './services/login.service';
-
+import { QuizService } from './services/quiz-service.service';
 // PrimeNG
 import { MessageService } from 'primeng/components/common/messageservice';
 
@@ -37,7 +37,8 @@ const exportedComponents = [
 
 const exportedServices = [
   LoginService,
-  MessageService
+  MessageService,
+  QuizService,
 ];
 
 @NgModule({

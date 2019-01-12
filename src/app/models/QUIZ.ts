@@ -1,4 +1,5 @@
 import { QUIZ_FORM_STATE } from '../models/QUIZ_FORM_STATE';
+import { QuestionModel } from '../models/QUESTION';
 
 export class Quiz {
     id?: Number;
@@ -14,7 +15,8 @@ export class Quiz {
 
 export class QuizPageModel extends Quiz {
     viewMode: QUIZ_FORM_STATE;
-
+    category: String[];
+    questions: QuestionModel[];
     constructor(quiz?: Quiz) {
         super();
         if (!quiz) {

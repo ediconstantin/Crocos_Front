@@ -3,7 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { API_PATH } from '../../models/API_PATH';
 import { QUIZ_FORM_STATE } from '../../models/QUIZ_FORM_STATE';
 import { Observable } from 'rxjs';
-import { Quiz, QuizPageModel } from '../../models/Quiz';
+import { Quiz, QuizPageModel } from '../../models/QUIZ';
+import { QuizService } from '../../services/quiz-service.service';
 import { Message } from 'primeng/api';
 import * as moment from 'moment';
 
@@ -17,15 +18,27 @@ export class QuizFormComponent implements OnInit {
   STATES = QUIZ_FORM_STATE;
   quizId: Number;
   errorMsgs: Message[];
+  pageModel: QuizPageModel;
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private quizService: QuizService
   ) { }
 
   ngOnInit() {
     this.STATE = this.activatedRoute.snapshot.data.mode;
-    console.log(this.STATE);
+    // Pagemodel
+    this.quizService._getAll().subscribe(res => {
+      console.log(res);
+    }, err => {
+      console.log(err);
+    });
+  }
+
+
+  deleteQuiz() {
+    // Sa fie facut serviciu de delete
   }
 
 }
