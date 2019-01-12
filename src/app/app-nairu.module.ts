@@ -8,6 +8,8 @@ import { AngularWebStorageModule } from 'angular-web-storage';
 
 // Components
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { AdminMenuComponent } from './pages/admin-menu/admin-menu.component';
+import { UserMenuComponent } from './pages/user-menu/user-menu.component';
 
 // Services
 import { LoginService } from './services/login.service';
@@ -16,7 +18,9 @@ import { LoginService } from './services/login.service';
 import { MessageService } from 'primeng/components/common/messageservice';
 
 const exportedComponents = [
-  LoginPageComponent
+  LoginPageComponent,
+  AdminMenuComponent,
+  UserMenuComponent
 ];
 
 const exportedServices = [

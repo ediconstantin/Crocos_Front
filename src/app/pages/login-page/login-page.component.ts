@@ -35,10 +35,10 @@ export class LoginPageComponent implements OnInit {
 
   doLogin(username, password) {
     // De apelat serviciul de login, meanwhile
-    if (username === 'admin') {
+    if (username === 'admin' && password === 'admin') {
       this.router.navigate(['/admin']);
-    } else if (username === 'user') {
-      this.router.navigate(['/home']);
+    } else if (username === 'user' && password === 'user') {
+      this.router.navigate(['/menu']);
     } else if (this.err instanceof HttpErrorResponse) {
       switch (this.err.status) {
         case STATUS.UNAUTHORIZED:

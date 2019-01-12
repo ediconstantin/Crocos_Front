@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Routes
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { AdminMenuComponent } from './pages/admin-menu/admin-menu.component';
+import { UserMenuComponent } from './pages/user-menu/user-menu.component';
 
 const routes: Routes = [
     {
@@ -14,6 +16,16 @@ const routes: Routes = [
         path: 'login',
         pathMatch: 'full',
         component: LoginPageComponent
+    },
+    {
+        path: 'admin',
+        pathMatch: 'full',
+        component: AdminMenuComponent
+    },
+    {
+        path: 'menu',
+        pathMatch: 'full',
+        component: UserMenuComponent
     }
 ];
 
