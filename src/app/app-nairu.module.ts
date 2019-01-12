@@ -20,6 +20,7 @@ import { SelectQuizComponent } from './components/select-quiz/select-quiz.compon
 // Services
 import { LoginService } from './services/login.service';
 import { QuizService } from './services/quiz-service.service';
+
 // PrimeNG
 import { MessageService } from 'primeng/components/common/messageservice';
 
@@ -42,6 +43,7 @@ const exportedServices = [
 ];
 
 @NgModule({
+    // tslint:disable-next-line:max-line-length
     imports: [PrimengModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, HttpClientModule, AngularWebStorageModule],
     exports: [...exportedComponents, PrimengModule],
     providers: [...exportedServices],

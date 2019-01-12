@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { API_PATH } from '../models/API_PATH';
 
 @Injectable({
@@ -15,6 +15,14 @@ export class LoginService {
       password: password
     };
     return this.http.post(API_PATH.USER_LOGIN, body);
+  }
+
+  googleAuth(idToken) {
+    const options = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'token': idToken
+    });
+    return this.http.post(`${API_PATH.USER_LOGIN}`, options);
   }
 
   logout(token: String) {

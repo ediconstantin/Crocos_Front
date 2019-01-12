@@ -4,6 +4,8 @@ import { NairuModule } from './app-nairu.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PrimengModule } from './app-primeng.module';
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
+import { getAuthServiceConfigs } from './socialLoginConfig';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,7 @@ import { PrimengModule } from './app-primeng.module';
     BrowserModule,
     AppRoutingModule,
     NairuModule,
-    PrimengModule
+    PrimengModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
