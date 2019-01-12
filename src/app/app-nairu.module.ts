@@ -9,11 +9,20 @@ import { AngularWebStorageModule } from 'angular-web-storage';
 // Components
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 
+// Services
+import { LoginService } from './services/login.service';
+
+// PrimeNG
+import { MessageService } from 'primeng/components/common/messageservice';
+
 const exportedComponents = [
   LoginPageComponent
 ];
 
-const exportedServices = [];
+const exportedServices = [
+  LoginService,
+  MessageService
+];
 
 @NgModule({
     imports: [PrimengModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, HttpClientModule, AngularWebStorageModule],
