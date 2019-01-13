@@ -1,4 +1,4 @@
-<!-- <div class="p-grid">
+<div class="p-grid">
   <div class="p-col-fixed centered error-message-container">
     <div class="p-grid">
       <div class="p-col-12">
@@ -8,20 +8,18 @@
   </div>
 </div>
 
+
 <div class="article-form">
   <div class="p-grid">
     <div class="p-col-12">
       <div *ngIf="STATE === STATES.VIEW">
-        <h2 class="page-title">#</h2>
+        <h2 class="page-title">View Quiz</h2>
       </div>
       <div *ngIf="STATE === STATES.EDIT">
-        <h2 class="page-title">#</h2>
-      </div>
-      <div *ngIf="STATE === STATES.REPLACE">
-        <h2 class="page-title">#</h2>
+        <h2 class="page-title">Edit Quiz</h2>
       </div>
       <div *ngIf="STATE === STATES.NEW">
-        <h2 class="page-title">Creare Quiz</h2>
+        <h2 class="page-title">Create Quiz</h2>
       </div>
     </div>
 
@@ -29,379 +27,113 @@
       <div *ngIf="STATE === STATES.VIEW">
         <div class="control-buttons">
           <button pButton type="button" label="Edit" class="ui-button-raised ui-button-rounded" (click)="editArticle()"></button>
-          <button pButton type="button" label="Replace" class="ui-button-raised ui-button-rounded" (click)="replaceArticleNavi()"></button>
           <button pButton type="button" label="Delete" class="ui-button-raised ui-button-rounded" (click)="deleteConfirmation()"></button>
         </div>
       </div>
     </div>
   </div>
 
+
   <div class="p-grid" style="margin-left: 5px;">
     <div class="p-col-8">
       <div class="p-grid data-line">
         <div class="p-col-12"></div>
-        <div class="p-col-12" *ngIf="STATE === STATES.REPLACE">
-          <p-checkbox name="replaceCheck" value="replaceConfirm" label="Delete article {{replaceArticleNumber}}, {{replaceArticleName}} and replace it with the one below."
-            (onChange)="replaceEnable()"></p-checkbox>
-        </div>
         <div class="p-col-4">
           <h2>General Information</h2>
         </div>
         <div class="p-col-6"></div>
         <div class="p-col-4">
-          <label for="article-number">Article Number</label>
+          <label for="title">Title</label>
         </div>
-        <div class="p-col-6" *ngIf="STATE === STATES.REPLACE">
-          <input pInputText id="article-number" [(ngModel)]="pageModel.articleNumber" [disabled]="notChecked" [ngClass]="{'not-valid': getErrorStatus('rarticle-number')}">
-        </div>
-        <div class="p-col-6" *ngIf="STATE !== STATES.REPLACE">
-          <input pInputText id="article-number" [(ngModel)]="pageModel.articleNumber" [disabled]="STATE === STATES.VIEW || STATE === STATES.EDIT"
-            [ngClass]="{'not-valid': getErrorStatus('article-number')}">
+        <div class="p-col-6">
+          <input pInputText id="title" [disabled]="STATE === STATES.VIEW">
         </div>
         <div class="p-col-4">
-          <label for="article-name">Article Name
+          <label for="Description">Description</label>
+        </div>
+        <div class="p-col-6">
+          <input pInputText id="Description" [disabled]="STATE === STATES.VIEW">
+        </div>
+        <div class="p-col-4">
+          <label for="duration">Choose a duration in seconds for each question
           </label>
+          <i class="fa fa-info-circle tooltip" pTooltip="#"></i>
         </div>
-        <div class="p-col-6" *ngIf="STATE === STATES.REPLACE">
-          <input pInputText id="article-name" [(ngModel)]="pageModel.title" [disabled]="notChecked" [ngClass]="{'not-valid': getErrorStatus('rarticle-name')}">
-        </div>
-        <div class="p-col-6" *ngIf="STATE !== STATES.REPLACE">
-          <input pInputText id="article-name" [(ngModel)]="pageModel.title" [disabled]="STATE === STATES.VIEW"
-            [ngClass]="{'not-valid': getErrorStatus('article-name')}">
+        <div class="p-col-6">
+          <input pInputText id="duration" [disabled]="STATE === STATES.VIEW">
         </div>
         <div class="p-col-4">
-          <label for="article-tags">Tags
-          </label>
-          <i class="fa fa-info-circle tooltip" pTooltip="Tags help user to find this product in the search field quicker. If they type into search the tag like 'footwear' they will get products with this tag as result. Be aware that the tag should not be the same as any word in the product name. User can per default search for all words that the product name."></i>
+          <label for="questionNumber">How many questions will the quiz have?</label>
         </div>
-        <div class="p-col-6" *ngIf="STATE === STATES.REPLACE">
-          <input pInputText id="article-tags" [(ngModel)]="pageModel.tags" [disabled]="notChecked" [ngClass]="{'not-valid': getErrorStatus('rarticle-tags')}">
-        </div>
-        <div class="p-col-6" *ngIf="STATE !== STATES.REPLACE">
-          <input pInputText id="article-tags" [(ngModel)]="pageModel.tags" [disabled]="STATE === STATES.VIEW" [ngClass]="{'not-valid': getErrorStatus('article-tags')}">
+        <div class="p-col-6">
+          <input pInputText id="questionNumber" [disabled]="STATE === STATES.VIEW">
         </div>
         <div class="p-col-4">
-          <label for="picture-simple">Picture (png/jpg)</label>
-          <i class="fa fa-info-circle tooltip" pTooltip="Upload an image in a .jpg, .gif, or .png format. Image file must not be bigger than X MB"></i>
+          <label for="retries">How many retries does a student have?</label>
         </div>
-        <div class="p-col-8" *ngIf="STATE === STATES.REPLACE">
-          <p-fileUpload auto="auto" name="file" [multiple]="true" (onUpload)="onFileUpload($event, 'simple')" [url]="uploadUrl"
-            files="pageModel.picturesSimple" accept=".png,.jpg,.jpeg" maxFileSize="50000000" [ngClass]="{'not-valid': getErrorStatus('rpicture-simple')}"
-            [disabled]="notChecked">
-            <ng-template pTemplate="content">
-              <ul *ngIf="pageModel.picturesSimple.length">
-                <li *ngFor="let file of pageModel.picturesSimple">{{file.originalFilename}} - {{file.type}}
-                  <button pButton type="button" class="ui-button-danger" [disabled]="notChecked" icon="fa fa-window-close"
-                    (click)="removeFileFrom(file, pageModel.picturesSimple)"></button>
-                </li>
-              </ul>
-            </ng-template>
-          </p-fileUpload>
-        </div>
-        <div class="p-col-8" *ngIf="STATE !== STATES.REPLACE">
-          <p-fileUpload auto="auto" [disabled]="STATE === STATES.VIEW" name="file" [multiple]="true" (onUpload)="onFileUpload($event, 'simple')"
-            [url]="uploadUrl" files="pageModel.picturesSimple" accept=".png,.jpg,.jpeg" maxFileSize="50000000"
-            [ngClass]="{'not-valid': getErrorStatus('picture-simple')}">
-            <ng-template pTemplate="content">
-              <ul *ngIf="pageModel.picturesSimple.length">
-                <li *ngFor="let file of pageModel.picturesSimple">{{file.originalFilename}} - {{file.type}}
-                  <button pButton type="button" class="ui-button-danger" icon="fa fa-window-close" (click)="removeFileFrom(file, pageModel.picturesSimple)"
-                    [disabled]="STATE === STATES.VIEW"></button>
-                </li>
-              </ul>
-            </ng-template>
-          </p-fileUpload>
+        <div class="p-col-6">
+          <input pInputText id="retries" [disabled]="STATE === STATES.VIEW">
         </div>
         <div class="p-col-4">
-          <label for="picture-measures">Picture with measures (png/jpg)</label>
-          <i class="fa fa-info-circle tooltip" pTooltip="Upload an image in a .jpg, .gif, or .png format. Image file must not be bigger than X MB"></i>
+          <label for="backwards">Can the student go to a previously answered question?</label>
         </div>
-        <div class="p-col-8" *ngIf="STATE === STATES.REPLACE">
-          <p-fileUpload auto="auto" name="file" (onUpload)="onFileUpload($event, 'measure')" [url]="uploadUrl" files="pageModel.measurePictures"
-            [multiple]="false" accept=".png,.jpg,.jpeg" maxFileSize="50000000" [disabled]="notChecked" [ngClass]="{'not-valid': getErrorStatus('rpicture-measures')}">
-            <ng-template pTemplate="content">
-              <ul *ngIf="pageModel.measurePictures.length">
-                <li *ngFor="let file of pageModel.measurePictures">{{file.originalFilename}} - {{file.type}}
-                  <button pButton type="button" class="ui-button-danger" [disabled]="notChecked" icon="fa fa-window-close"
-                    (click)="removeFileFrom(file, pageModel.measurePictures)"></button>
-                </li>
-              </ul>
-            </ng-template>
-          </p-fileUpload>
-        </div>
-        <div class="p-col-8" *ngIf="STATE !== STATES.REPLACE">
-          <p-fileUpload auto="auto" [disabled]="STATE === STATES.VIEW" name="file" (onUpload)="onFileUpload($event, 'measure')"
-            [url]="uploadUrl" files="pageModel.measurePictures" [multiple]="false" accept=".png,.jpg,.jpeg" maxFileSize="50000000"
-            [ngClass]="{'not-valid': getErrorStatus('picture-measures')}">
-            <ng-template pTemplate="content">
-              <ul *ngIf="pageModel.measurePictures.length">
-                <li *ngFor="let file of pageModel.measurePictures">{{file.originalFilename}} - {{file.type}}
-                  <button pButton type="button" class="ui-button-danger" icon="fa fa-window-close" (click)="removeFileFrom(file, pageModel.measurePictures)"
-                    [disabled]="STATE === STATES.VIEW"></button>
-                </li>
-              </ul>
-            </ng-template>
-          </p-fileUpload>
+        <div class="p-col-6">
+          <p-radioButton name="backwardsEnabled" value="true" label="Yes" [disabled]="STATE === STATES.VIEW"></p-radioButton>
+          <p-radioButton name="backwardsDisabled" value="false" label="No" [disabled]="STATE === STATES.VIEW"></p-radioButton>
         </div>
         <div class="p-col-4">
-          <label for="instalation-guideline">Instalation guidelines (pdf)</label>
+          <label for="feedback">Is feedback enabled for this quiz</label>
         </div>
-        <div class="p-col-8" *ngIf="STATE === STATES.REPLACE">
-          <p-fileUpload auto="auto" name="file" (onUpload)="onFileUpload($event, 'install')" [url]="uploadUrl"
-            [multiple]="false" accept=".pdf" maxFileSize="50000000" [disabled]="notChecked" [ngClass]="{'not-valid': getErrorStatus('rinstalation-guideline')}">
-            <ng-template pTemplate="content">
-              <ul *ngIf="this.pageModel.installGuidelines.length">
-                <li *ngFor="let file of this.pageModel.installGuidelines">{{file.originalFilename}} - {{file.type}}
-                  <button pButton type="button" class="ui-button-danger" [disabled]="notChecked" icon="fa fa-window-close"
-                    (click)="removeFileFrom(file, pageModel.installGuidelines)"></button>
-                </li>
-              </ul>
-            </ng-template>
-          </p-fileUpload>
+        <div class="p-col-6">
+          <p-radioButton name="feedbackEnabled" value="1" label="Yes" [disabled]="STATE === STATES.VIEW"></p-radioButton>
+          <p-radioButton name="feedbackDisabled" value="0" label="No" [disabled]="STATE === STATES.VIEW"></p-radioButton>
         </div>
-        <div class="p-col-8" *ngIf="STATE !== STATES.REPLACE">
-          <p-fileUpload auto="auto" [disabled]="STATE === STATES.VIEW" name="file" (onUpload)="onFileUpload($event, 'install')"
-            [url]="uploadUrl" [multiple]="false" accept=".pdf" maxFileSize="50000000" [ngClass]="{'not-valid': getErrorStatus('instalation-guideline')}">
-            <ng-template pTemplate="content">
-              <ul *ngIf="this.pageModel.installGuidelines.length">
-                <li *ngFor="let file of this.pageModel.installGuidelines">{{file.originalFilename}} - {{file.type}}
-                  <button pButton type="button" class="ui-button-danger" icon="fa fa-window-close" (click)="removeFileFrom(file, pageModel.installGuidelines)"
-                    [disabled]="STATE === STATES.VIEW"></button>
-                </li>
-              </ul>
-            </ng-template>
-          </p-fileUpload>
-        </div>
-
         <div class="p-col-4">
-          <label for="drawing">Technical Drawings (pdf)</label>
+          <label for="public">Is the quiz public?</label>
         </div>
-        <div class="p-col-8" *ngIf="STATE === STATES.REPLACE">
-          <p-fileUpload auto="auto" name="file" (onUpload)="onFileUpload($event, 'drawing')" [url]="uploadUrl"
-            [multiple]="false" accept=".pdf" maxFileSize="50000000" [disabled]="notChecked" [ngClass]="{'not-valid': getErrorStatus('rdrawing')}">
-            <ng-template pTemplate="content">
-              <ul *ngIf="this.pageModel.technicalDrawings.length">
-                <li *ngFor="let file of this.pageModel.technicalDrawings">{{file.originalFilename}} - {{file.type}}
-                  <button pButton type="button" class="ui-button-danger" [disabled]="notChecked" icon="fa fa-window-close"
-                    (click)="removeFileFrom(file, pageModel.technicalDrawings)"></button>
-                </li>
-              </ul>
-            </ng-template>
-          </p-fileUpload>
+        <div class="p-col-6">
+          <p-radioButton name="publicEnabled" value="true" label="Yes" [disabled]="STATE === STATES.VIEW"></p-radioButton>
+          <p-radioButton name="publicDisabled" value="false" label="No" [disabled]="STATE === STATES.VIEW"></p-radioButton>
         </div>
-        <div class="p-col-8" *ngIf="STATE !== STATES.REPLACE">
-          <p-fileUpload auto="auto" [disabled]="STATE === STATES.VIEW" name="file" (onUpload)="onFileUpload($event, 'drawing')"
-            [url]="uploadUrl" [multiple]="false" accept=".pdf" maxFileSize="50000000" [ngClass]="{'not-valid': getErrorStatus('drawing')}">
-            <ng-template pTemplate="content">
-              <ul *ngIf="this.pageModel.technicalDrawings.length">
-                <li *ngFor="let file of this.pageModel.technicalDrawings">{{file.originalFilename}} - {{file.type}}
-                  <button pButton type="button" class="ui-button-danger" icon="fa fa-window-close" (click)="removeFileFrom(file, pageModel.technicalDrawings)"
-                    [disabled]="STATE === STATES.VIEW"></button>
-                </li>
-              </ul>
-            </ng-template>
-          </p-fileUpload>
-        </div>
-
         <div class="p-col-4">
-          <label for="cad">CAD File (dwg)</label>
+          <h2>Categories</h2>
         </div>
-        <div class="p-col-8" *ngIf="STATE === STATES.REPLACE">
-          <p-fileUpload auto="auto" [disabled]="notChecked" name="file" (onUpload)="onFileUpload($event, 'cad')" [url]="uploadUrl"
-            [multiple]="false" accept=".dwg" maxFileSize="50000000" [ngClass]="{'not-valid': getErrorStatus('rcad')}">
-            <ng-template pTemplate="content">
-              <ul *ngIf="this.pageModel.cadFiles.length">
-                <li *ngFor="let file of this.pageModel.cadFiles">{{file.originalFilename}} - {{file.type}}
-                  <button pButton type="button" class="ui-button-danger" icon="fa fa-window-close" (click)="removeFileFrom(file, pageModel.cadFiles)"
-                    [disabled]="notChecked"></button>
-                </li>
-              </ul>
+        <div class="p-col-8"></div>
+        <div class="p-col-8">
+          <p-pickList [source]="list1" [target]="list2" [disabled]="STATE === STATES.VIEW">
+            <ng-template let-car pTemplate="item">
+              <div class="ui-helper-clearfix">
+                <div style="font-size:14px;float:right;margin:15px 5px 0 0">a - a - a</div>
+              </div>
             </ng-template>
-          </p-fileUpload>
+          </p-pickList>
         </div>
-
-        <div class="p-col-8" *ngIf="STATE !== STATES.REPLACE">
-          <p-fileUpload auto="auto" [disabled]="STATE === STATES.VIEW" name="file" (onUpload)="onFileUpload($event, 'cad')"
-            [url]="uploadUrl" [multiple]="false" accept=".dwg" maxFileSize="50000000" [ngClass]="{'not-valid': getErrorStatus('cad')}">
-            <ng-template pTemplate="content">
-              <ul *ngIf="this.pageModel.cadFiles.length">
-                <li *ngFor="let file of this.pageModel.cadFiles">{{file.originalFilename}} - {{file.type}}
-                  <button pButton type="button" class="ui-button-danger" icon="fa fa-window-close" (click)="removeFileFrom(file, pageModel.cadFiles)"
-                    [disabled]="STATE === STATES.VIEW"></button>
-                </li>
-              </ul>
-            </ng-template>
-          </p-fileUpload>
-        </div>
-
+        <div class="p-col-4"></div>
         <div class="p-col-4">
-          <label for="text">Text
-          </label>
+          <h2>Questions</h2>
         </div>
-        <div class="p-col-6" *ngIf="STATE === STATES.REPLACE">
-          <textarea id="text" pInputTextarea [(ngModel)]="pageModel.text" [disabled]="notChecked" [ngClass]="{'not-valid': getErrorStatus('rtext')}"></textarea>
+        <div class="p-col-8"></div>
+        <div class="p-col-8">
+          <p-pickList [source]="list1" [target]="list2" [disabled]="STATE === STATES.VIEW">
+            <ng-template let-car pTemplate="item">
+              <div class="ui-helper-clearfix">
+                <div style="font-size:14px;float:right;margin:15px 5px 0 0">a - a - a</div>
+              </div>
+            </ng-template>
+          </p-pickList>
         </div>
-        <div class="p-col-6" *ngIf="STATE !== STATES.REPLACE">
-          <textarea id="text" pInputTextarea [(ngModel)]="pageModel.text" [disabled]="STATE === STATES.VIEW" [ngClass]="{'not-valid': getErrorStatus('text')}"></textarea>
+        <div class="p-col-4"></div>
+        <div class="p-col-4">
+          <button pButton type="button" label="Add new question" (click)="addNewQuestion()" [disabled]="STATE === STATES.VIEW"></button>
         </div>
-
       </div>
     </div>
   </div>
 
-  <div class="p-grid">
-    <div class="p-col-12">
-      <h2>Relations</h2>
-    </div>
-  </div>
-  <div class="p-grid">
-    <div class="p-col-12" *ngIf="STATE === STATES.REPLACE">
-      <div class="p-grid">
-        <div class="p-col-12">
-          <div class="p-col-6">
-            <h5>Is this article part of a set?</h5>
-            <p-radioButton name="isPartOfSet" [value]="true" [disabled]="notChecked" label="Yes, add article to set"
-              [(ngModel)]="pageModel.isPartOfSet" (click)="validate()"></p-radioButton>
-          </div>
-          <div class="p-col-6">
-            <p-radioButton name="isPartOfSet" [value]="false" [disabled]="notChecked" label="No, standalone"
-              [(ngModel)]="pageModel.isPartOfSet" (click)="validate()"></p-radioButton>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="p-col-12" *ngIf="STATE !== STATES.REPLACE">
-      <div class="p-grid">
-        <div class="p-col-12">
-          <div class="p-col-6">
-            <h5>Is this article part of a set?</h5>
-            <p-radioButton name="isPartOfSet" [value]="true" label="Yes, add article to set" [(ngModel)]="pageModel.isPartOfSet"
-              (click)="validate()" [disabled]="STATE === STATES.VIEW"></p-radioButton>
-          </div>
-          <div class="p-col-6">
-            <p-radioButton name="isPartOfSet" [value]="false" label="No, standalone" [(ngModel)]="pageModel.isPartOfSet"
-              (click)="validate()" [disabled]="STATE === STATES.VIEW"></p-radioButton>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="p-col-12" *ngIf="STATE === STATES.REPLACE && pageModel.isPartOfSet">
-      <div class="p-grid">
-        <div class="p-col-12">
-          <p>Relations with Sets
-            <i class="fa fa-info-circle tooltip" pTooltip="TBD"></i>
-          </p>
-        </div>
-      </div>
-      <p-pickList styleClass="list-2-buttons" [responsive]="true" [disabled]="notChecked|| !pageModel.isPartOfSet"
-        [dragdrop]="!(STATE === STATES.VIEW || !pageModel.isPartOfSet)" [source]="allSets" [target]="pageModel.selectedSets"
-        dragdrop="true" filterBy="articleNumber,title" sourceHeader="All Sets:" targetHeader="This article is part of:"
-        [ngClass]="{'not-valid': getErrorStatus('rrelation-set')}">
-        <ng-template let-guidelineSet pTemplate="item">
-          <div>{{guidelineSet.articleNumber}} {{guidelineSet.title}}</div>
-        </ng-template>
-      </p-pickList>
-    </div>
-    <div class="p-col-12" *ngIf="STATE !== STATES.REPLACE && pageModel.isPartOfSet">
-      <div class="p-grid">
-        <div class="p-col-12">
-          <p>Relations with Sets
-            <i class="fa fa-info-circle tooltip" pTooltip="TBD"></i>
-          </p>
-        </div>
-      </div>
-      <p-pickList styleClass="list-2-buttons" [responsive]="true" [disabled]="STATE === STATES.VIEW || !pageModel.isPartOfSet"
-        [dragdrop]="!(STATE === STATES.VIEW || !pageModel.isPartOfSet)" [source]="allSets" [target]="pageModel.selectedSets"
-        dragdrop="true" filterBy="articleNumber,title" sourceHeader="All Sets:" targetHeader="This article is part of:"
-        [ngClass]="{'not-valid': getErrorStatus('relation-set')}">
-        <ng-template let-guidelineSet pTemplate="item">
-          <div>{{guidelineSet.articleNumber}} {{guidelineSet.title}}</div>
-        </ng-template>
-      </p-pickList>
-    </div>
-  </div>
-
-  <div class="p-grid">
-    <div class="p-col-12">
-    </div>
-    <div class="p-col-12" *ngIf="STATE === STATES.REPLACE && !pageModel.isPartOfSet">
-      <div class="p-grid">
-        <div class="p-col-12">
-          <h5>Relations with Groups
-            <i class="fa fa-info-circle tooltip" pTooltip="Concept Hardware overview is divided into groups. By selecting the group you also define the position of the article within the Concept Hardware"></i>
-          </h5>
-        </div>
-      </div>
-      <p-pickList styleClass="list-2-buttons" [responsive]="true" [disabled]="STATE === STATES.VIEW || pageModel.isPartOfSet || notChecked"
-        [dragdrop]="!(STATE === STATES.VIEW || pageModel.isPartOfSet)" [source]="allGroups" [target]="pageModel.selectedGroups"
-        dragdrop="true" filterBy="title" sourceHeader="All Groups:" targetHeader="This article is part of:" [ngClass]="{'not-valid': getErrorStatus('rrelation-group')}">
-        <ng-template let-group pTemplate="item">
-          <div>{{group.title}}</div>
-        </ng-template>
-      </p-pickList>
-    </div>
-
-    <div class="p-col-12" *ngIf="STATE !== STATES.REPLACE && !pageModel.isPartOfSet">
-      <div class="p-grid">
-        <div class="p-col-12">
-          <h5>Relations with Groups
-            <i class="fa fa-info-circle tooltip" pTooltip="Concept Hardware overview is divided into groups. By selecting the group you also define the position of the article within the Concept Hardware"></i>
-          </h5>
-        </div>
-      </div>
-      <p-pickList styleClass="list-2-buttons" [responsive]="true" [disabled]="STATE === STATES.VIEW || pageModel.isPartOfSet"
-        [dragdrop]="!(STATE === STATES.VIEW || pageModel.isPartOfSet)" [source]="allGroups" [target]="pageModel.selectedGroups"
-        dragdrop="true" filterBy="title" sourceHeader="All Groups:" targetHeader="This article is part of:" [ngClass]="{'not-valid': getErrorStatus('relation-group')}">
-        <ng-template let-group pTemplate="item">
-          <div>{{group.title}}</div>
-        </ng-template>
-      </p-pickList>
-    </div>
-  </div>
-
-  <div class="p-grid">
-    <div class="p-col-12">
-    </div>
-    <div class="p-col-12" *ngIf="STATE === STATES.REPLACE && !pageModel.isPartOfSet">
-      <div class="p-grid">
-        <div class="p-col-12">
-          <h5>Relations with Zones
-            <i class="fa fa-info-circle tooltip" pTooltip="By selecting Zones you are defining in which Zones this article should be displayed."></i>
-          </h5>
-        </div>
-      </div>
-      <p-pickList styleClass="list-2-buttons" [responsive]="true" [disabled]="STATE === STATES.VIEW || pageModel.isPartOfSet || notChecked"
-        [dragdrop]="!(STATE === STATES.VIEW || pageModel.isPartOfSet)" [source]="allZones" [target]="pageModel.selectedZones"
-        dragdrop="true" filterBy="title" sourceHeader="All Zones:" targetHeader="This article is part of:" [ngClass]="{'not-valid': getErrorStatus('rrelation-zone')}">
-        <ng-template let-zone pTemplate="item">
-          <div>{{zone.title}}</div>
-        </ng-template>
-      </p-pickList>
-    </div>
-    <div class="p-col-12" *ngIf="STATE !== STATES.REPLACE && !pageModel.isPartOfSet">
-      <div class="p-grid">
-        <div class="p-col-12">
-          <h5>Relations with Zones
-            <i class="fa fa-info-circle tooltip" pTooltip="By selecting Zones you are defining in which Zones this article should be displayed."></i>
-          </h5>
-        </div>
-      </div>
-      <p-pickList styleClass="list-2-buttons" [responsive]="true" [disabled]="STATE === STATES.VIEW || pageModel.isPartOfSet"
-        [dragdrop]="!(STATE === STATES.VIEW || pageModel.isPartOfSet)" [source]="allZones" [target]="pageModel.selectedZones"
-        dragdrop="true" filterBy="title" sourceHeader="All Zones:" targetHeader="This article is part of:" [ngClass]="{'not-valid': getErrorStatus('relation-zone')}">
-        <ng-template let-zone pTemplate="item">
-          <div>{{zone.title}}</div>
-        </ng-template>
-      </p-pickList>
-    </div>
-  </div>
+  <!-- 2 Picklist-uri pentru categorie si intrebari -->
 
   <div class="p-grid footer" *ngIf="STATE !== STATES.VIEW">
-    <div class="p-col-fixed centered edit-buttons" *ngIf="STATE === STATES.REPLACE">
-      <button pButton type="button" label="Save" [disabled]="notChecked" (click)="saveReplaceModalShow(pageModel.flags.readyToPublish)"></button>
-      <button pButton type="button" label="Cancel" [disabled]="notChecked" (click)="cancelConfirmation()"></button>
-    </div>
-    <div class="p-col-fixed centered edit-buttons" *ngIf="STATE !== STATES.REPLACE">
+    <div class="p-col-fixed centered edit-buttons">
       <button pButton type="button" label="Save" (click)="saveModalShow(pageModel.flags.readyToPublish)"></button>
       <button pButton type="button" label="Cancel" (click)="cancelConfirmation()"></button>
     </div>
@@ -410,19 +142,9 @@
 
 <p-dialog header="Save Confirmation" [(visible)]="displaySaveModal" [modal]="true" [responsive]="true" [width]="350"
   [minWidth]="350" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
-  <span>Are you sure you want to save the article as it is now?</span>
+  <span>Are you sure you want to save the quiz as it is now?</span>
   <p-footer>
     <button type="button" pButton icon="fa fa-check" (click)="saveArticle()" label="Yes"></button>
     <button type="button" pButton icon="fa fa-close" (click)="displaySaveModal = false" label="No"></button>
   </p-footer>
 </p-dialog>
-
-<p-dialog [(visible)]="displayReplaceSaveModal" [modal]="true" [responsive]="true" [width]="350" [minWidth]="350"
-  [minY]="70" [maximizable]="true" [baseZIndex]="10000">
-  <span>Are you sure you want to delete Article {{ replaceArticleNumber }} and replace it with article
-    {{ pageModel.articleNumber }} ?</span>
-  <p-footer>
-    <button type="button" pButton icon="fa fa-check" (click)="saveArticle()" label="Yes"></button>
-    <button type="button" pButton icon="fa fa-close" (click)="displayReplaceSaveModal = false" label="No"></button>
-  </p-footer>
-</p-dialog> -->

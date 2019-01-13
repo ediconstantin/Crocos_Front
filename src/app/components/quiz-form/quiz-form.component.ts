@@ -28,17 +28,23 @@ export class QuizFormComponent implements OnInit {
 
   ngOnInit() {
     this.STATE = this.activatedRoute.snapshot.data.mode;
-    // Pagemodel
-    this.quizService._getAll().subscribe(res => {
-      console.log(res);
-    }, err => {
-      console.log(err);
-    });
+    console.log(this.STATE);
   }
 
+  addNewQuestion() {
+
+  }
+
+  cancelQuiz() {
+    // Sa dai cancel la formular
+  }
 
   deleteQuiz() {
     // Sa fie facut serviciu de delete
+  }
+
+  saveQuiz() {
+    // Sa salvam formularul
   }
 
 }
