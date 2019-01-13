@@ -25,6 +25,7 @@ import { MessageModule } from 'primeng/message';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { CalendarModule } from 'primeng/calendar';
 import { MultiSelectModule } from 'primeng/multiselect';
+import {CarouselModule} from 'primeng/carousel';
 
 const sharedImportExport = [
   DropdownModule,
@@ -52,7 +53,8 @@ const sharedImportExport = [
   MessageModule,
   ConfirmDialogModule,
   CalendarModule,
-  MultiSelectModule
+  MultiSelectModule,
+  CarouselModule
 ];
 
 @NgModule({

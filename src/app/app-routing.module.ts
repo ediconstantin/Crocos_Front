@@ -8,9 +8,11 @@ import { UserMenuComponent } from './pages/user-menu/user-menu.component';
 import { AdminProfileComponent } from './pages/admin-profile/admin-profile.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { QuizFormComponent } from './components/quiz-form/quiz-form.component';
+import { LayoutPageComponent } from './components/layout-page/layout-page.component';
 
 // Variables
 import { QUIZ_FORM_STATE } from './models/QUIZ_FORM_STATE';
+import { provideForRootGuard } from '@angular/router/src/router_module';
 
 const routes: Routes = [
     {
@@ -23,53 +25,53 @@ const routes: Routes = [
         pathMatch: 'full',
         component: LoginPageComponent
     },
+    // Admin
     {
         path: 'admin',
         pathMatch: 'full',
-        component: AdminMenuComponent
+        component: AdminMenuComponent,
     },
     {
-        path: 'menu',
-        pathMatch: 'full',
-        component: UserMenuComponent
-    },
-    {
-        path: 'admin-profile',
+        path: 'admin/profile',
         pathMatch: 'full',
         component: AdminProfileComponent
     },
     {
-        path: 'user-profile',
-        pathMatch: 'full',
-        component: UserProfileComponent
-    },
-    {
-        path: 'quiz/:quizId',
+        path: 'admin/quiz/:quizId',
         data: {
             mode: QUIZ_FORM_STATE.EDIT
         },
         component: QuizFormComponent
     },
     {
-        path: 'quiz',
+        path: 'admin/quiz',
         data: {
             mode: QUIZ_FORM_STATE.NEW
         },
         component: QuizFormComponent
     },
     {
-        path: 'quiz/:quizId/view',
+        path: 'admin/quiz/:quizId/view',
         data: {
             mode: QUIZ_FORM_STATE.VIEW
         },
         component: QuizFormComponent
     },
-    // Aici o sa vina pentru ecranul de select
-    // De facut children routes neaparat
+    // Student
+    {
+        path: 'student',
+        pathMatch: 'full',
+        component: UserMenuComponent,
+    },
+    {
+        path: 'student/profile',
+        component: UserProfileComponent,
+        pathMatch: 'full',
+    }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, { enableTracing: false })],
+    imports: [RouterModule.forRoot(routes, { enableTracing: true })],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }

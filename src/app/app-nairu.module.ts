@@ -16,6 +16,9 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { SubHeaderComponent } from './components/sub-header/sub-header.component';
 import { QuizFormComponent } from './components/quiz-form/quiz-form.component';
 import { SelectQuizComponent } from './components/select-quiz/select-quiz.component';
+import { TestsListComponent } from './pages/tests-list/tests-list.component';
+import { QuizComponent } from './components/quiz/quiz.component';
+import { LayoutPageComponent } from './components/layout-page/layout-page.component';
 
 // Services
 import { LoginService } from './services/login.service';
@@ -33,7 +36,10 @@ const exportedComponents = [
   UserProfileComponent,
   SubHeaderComponent,
   QuizFormComponent,
-  SelectQuizComponent
+  SelectQuizComponent,
+  TestsListComponent,
+  QuizComponent,
+  LayoutPageComponent
 ];
 
 const exportedServices = [
@@ -43,7 +49,6 @@ const exportedServices = [
 ];
 
 @NgModule({
-    // tslint:disable-next-line:max-line-length
     imports: [PrimengModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, HttpClientModule, AngularWebStorageModule],
     exports: [...exportedComponents, PrimengModule],
     providers: [...exportedServices],

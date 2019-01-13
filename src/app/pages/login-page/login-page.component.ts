@@ -5,7 +5,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { SessionStorage } from 'angular-web-storage';
 import { LoginService } from '../../services/login.service';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-login-page',
@@ -41,9 +40,9 @@ export class LoginPageComponent implements OnInit {
   doLogin(username, password) {
     // De apelat serviciul de login, meanwhile
     if (username === 'admin' && password === 'admin') {
-      this.router.navigate(['/admin']);
+      this.router.navigate(['admin']);
     } else if (username === 'user' && password === 'user') {
-      this.router.navigate(['/menu']);
+      this.router.navigate(['student']);
     } else if (this.err instanceof HttpErrorResponse) {
       switch (this.err.status) {
         case STATUS.UNAUTHORIZED:

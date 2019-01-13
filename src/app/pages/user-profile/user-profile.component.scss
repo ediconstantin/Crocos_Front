@@ -1,0 +1,77 @@
+.article-form {
+    .article-title {
+        text-align: center;
+    }
+    .p-col-fixed.centered {
+        margin: 0 auto;
+    }
+    .control-buttons {
+        text-align: center;
+        border: 2px solid lightgrey;
+        background: #f4f4f4;
+        ::ng-deep {
+            button {
+                margin: 0.7rem;
+            }
+            .ui-button.ui-state-default.ui-button-warning {
+                color: white;
+                font-size: 14px;
+            }
+        }
+        &__edit {
+            margin-top: 30px;
+        }
+    }
+    .page-title {
+        text-align: center;
+    }
+    textarea,
+    #article-name,
+    #article-tags {
+        width: 100%;
+    }
+    .tooltip {
+        margin-left: 0.7rem;
+    }
+    .edit-buttons {
+        button {
+            margin: 1rem;
+        }
+    }
+    .validation-message {
+        color: #c13838;
+        margin-top: 5px;
+        &__container {
+            vertical-align: baseline;
+        }
+        &__big {
+            color: #c13838;
+        }
+    }
+}
+
+.footer {
+    background: lightgray;
+    &__head {
+        margin-top: 30px;
+        -webkit-box-shadow: inset 0px 2px 16px -4px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: inset 0px 2px 16px -4px rgba(0, 0, 0, 0.75);
+        box-shadow: inset 0px 2px 16px -4px rgba(0, 0, 0, 0.75);
+    }
+}
+
+.error-message-container {
+    width: 50%;
+    margin: 0 auto;
+    
+    ::ng-deep .ui-messages {
+        padding: 10px 50px 10px 10px;
+    }
+    ::ng-deep .ui-messages-icon {
+        display: none;
+    }
+}
+
+.p-grid {
+    margin-right: 0;
+}
