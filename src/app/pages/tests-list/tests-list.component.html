@@ -1,3 +1,27 @@
-<p>
-  tests-list works!
-</p>
+<!-- Toast -->
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
+
+<app-header></app-header>
+<!-- Page Content -->
+<div class="main-content p-grid edit-guideline-page">
+
+  <!-- Side Panel Menu -->
+  <div class="p-col-3 p-nogutter">
+    <p-panelMenu [model]="staticMenuItems" [multiple]="false"></p-panelMenu>
+  </div>
+
+  <!-- Page Content -->
+  <div class="p-col-9 p-nogutter">
+    <div class="p-grid">
+      <div class="p-col-12 p-nogutter data-accordion">
+        <app-sub-header></app-sub-header>
+
+        <p-accordion [lazy]="true" [multiple]="false">
+          <p-accordionTab>
+            
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+    </div>
+  </div>
+</div>

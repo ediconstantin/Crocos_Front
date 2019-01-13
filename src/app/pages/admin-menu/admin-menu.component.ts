@@ -16,7 +16,11 @@ export class AdminMenuComponent implements OnInit {
   }
 
   // De schimbat atunci cand se adauga children components
-  creareQuiz() {
-    this.router.navigate(['quiz']);
+  createQuiz() {
+    this.router.navigate(['admin/quiz']);
+  }
+
+  quizList() {
+    this.router.navigate(['admin/quiz-list']);
   }
 }

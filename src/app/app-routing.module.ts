@@ -13,6 +13,7 @@ import { LayoutPageComponent } from './components/layout-page/layout-page.compon
 // Variables
 import { QUIZ_FORM_STATE } from './models/QUIZ_FORM_STATE';
 import { provideForRootGuard } from '@angular/router/src/router_module';
+import { TestsListComponent } from './pages/tests-list/tests-list.component';
 
 const routes: Routes = [
     {
@@ -49,6 +50,11 @@ const routes: Routes = [
             mode: QUIZ_FORM_STATE.NEW
         },
         component: QuizFormComponent
+    },
+    {
+        path: 'admin/quiz-list',
+        pathMatch: 'full',
+        component: TestsListComponent
     },
     {
         path: 'admin/quiz/:quizId/view',
