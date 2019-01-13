@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { MENU_ITEMS } from '../../models/STATIC_MENU_ITEMS';
+import { MenuItem } from 'primeng/components/common/menuitem';
+
 
 @Component({
   selector: 'app-admin-menu',

@@ -10,13 +10,13 @@ export class SubHeaderComponent implements OnInit {
 
   tabItems: MenuItem[] = [
     {
-      label: 'EDIT DRAFT'
+      label: 'First Year - Quizzes'
     },
     {
-      label: 'VALIDATE DRAFT'
+      label: 'Second Year - Quizzes'
     },
     {
-      label: 'PUBLISH DRAFT'
+      label: 'Third Year - Quizzes'
     }
   ];
 

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { SessionStorage } from 'angular-web-storage';
 import { MenuItem } from 'primeng/api';
 import { SelectItem } from 'primeng/components/common/selectitem';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -60,12 +61,16 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private location: Location
   ) { }
 
   @SessionStorage('user_token') userToken;
   ngOnInit() {
+  }
 
+  goBack() {
+    this.location.back();
   }
 
 }

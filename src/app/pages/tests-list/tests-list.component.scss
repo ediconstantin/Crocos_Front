@@ -1,0 +1,31 @@
+.main-content.edit-guideline-page {
+    margin: 0 auto !important;
+  
+    ::ng-deep .ui-accordion-content {
+      padding: 0;
+    }
+  
+    .new-screen-button {
+      width: 100%;
+      padding: 0 !important;
+      margin-top: 0.3rem;
+    }
+  
+    .screen-list,
+    .set-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+  
+      .list-item {
+        padding: 0 5px;
+        margin: 5px 0;
+  
+        &.screen-set {
+          background: lightslategrey;
+        }
+      }
+    }
+  }
+  
+  
