@@ -23,6 +23,10 @@ import { LayoutPageComponent } from './components/layout-page/layout-page.compon
 // Services
 import { LoginService } from './services/login.service';
 import { QuizService } from './services/quiz-service.service';
+import { UserProfileService } from './services/user-profile.service';
+
+// Interceptors
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 // PrimeNG
 import { MessageService } from 'primeng/components/common/messageservice';
@@ -46,6 +50,13 @@ const exportedServices = [
   LoginService,
   MessageService,
   QuizService,
+  UserProfileService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptorService,
+    multi: true
+  },
+
 ];
 
 @NgModule({

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserProfileService } from '../../services/user-profile.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-admin-profile',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private userService: UserProfileService
+  ) { }
+
+  users: any[];
+  user: any;
+  userId = this.route.snapshot.params['id'];
 
   ngOnInit() {
+    this.getAllUsers();
   }
 
+  getAllUsers() {
+    this.users = [];
+    this.userService.getUsers().subscribe((res) => {
+      this.users = res;
+    }, (err) => {
+      console.log(err);
+    });
+  }
 }

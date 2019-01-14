@@ -18,17 +18,25 @@ export class QuizFormComponent implements OnInit {
   STATES = QUIZ_FORM_STATE;
   quizId: Number;
   errorMsgs: Message[];
-  pageModel: QuizPageModel;
+  pageModel = {
+    name: '',
+    description: '',
+    duration: null,
+    questionsNumber: '',
+    retries: null,
+    public: 0,
+    feedback: 0,
+    backwards: 0
+  };
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute,
+    private route: ActivatedRoute,
     private quizService: QuizService
   ) { }
 
   ngOnInit() {
-    this.STATE = this.activatedRoute.snapshot.data.mode;
-    console.log(this.STATE);
+    this.STATE = this.route.snapshot.data.mode;
   }
 
   addNewQuestion() {
@@ -44,7 +52,30 @@ export class QuizFormComponent implements OnInit {
   }
 
   saveQuiz() {
-    // Sa salvam formularul
+   const quiz = this.pageModel;
+
+   let saveFnc: (quiz: Quiz) => Observable<Object>;
+
+    switch (this.STATE) {
+      case QUIZ_FORM_STATE.NEW:
+        saveFnc = this.quizService.createTest;
+        break;
+    }
+
+   saveFnc(quiz).subscribe((res: Quiz) => {
+    console.log(res);
+    history.go(-1);
+   }, err => {
+     console.log(err);
+   });
+  }
+
+  backwardConfirmation(e, value) {
+    if (e.target.checked) {
+      this.pageModel.backwards = e.target.value;
+    } else {
+      this.pageModel.backwards = 0;
+    }
   }
 
 }

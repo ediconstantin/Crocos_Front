@@ -33,7 +33,7 @@ const routes: Routes = [
         component: AdminMenuComponent,
     },
     {
-        path: 'admin/profile',
+        path: 'admin/profile/:id',
         pathMatch: 'full',
         component: AdminProfileComponent
     },
@@ -70,7 +70,7 @@ const routes: Routes = [
         component: UserMenuComponent,
     },
     {
-        path: 'student/profile',
+        path: 'student/profile/:id',
         component: UserProfileComponent,
         pathMatch: 'full',
     }

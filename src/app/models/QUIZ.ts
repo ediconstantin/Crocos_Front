@@ -6,7 +6,7 @@ export class Quiz {
     name?: String;
     description?: String;
     duration?: Number;
-    questionsNumber?: Number;
+    questionsNumber?: any;
     retries?: Number;
     backwards?: any;
     feedback?: Number;
@@ -24,14 +24,14 @@ export class QuizPageModel extends Quiz {
         }
 
         this.id = quiz.id || null;
-        this.name = quiz.name || null;
-        this.description = quiz.description || null;
-        this.duration = quiz.duration || null;
-        this.questionsNumber = quiz.questionsNumber || null;
-        this.retries = quiz.retries || null;
-        this.backwards = quiz.backwards || null;
-        this.feedback = quiz.feedback || null;
-        this.isPublic = quiz.isPublic || null;
+        this.name = quiz.name || '';
+        this.description = quiz.description || '';
+        this.duration = quiz.duration || 0;
+        this.questionsNumber = quiz.questionsNumber || 0;
+        this.retries = quiz.retries || 0;
+        this.backwards = quiz.backwards || 0;
+        this.feedback = quiz.feedback || 0;
+        this.isPublic = quiz.isPublic || 0;
     }
 
     toQuiz = () => {
