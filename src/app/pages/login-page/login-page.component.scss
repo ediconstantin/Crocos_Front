@@ -1,10 +1,28 @@
+.p-grid {
+  background: rgb(103, 193, 126);
+}
+
+.page {
+  height: 30.1vh;
+}
+
+.login-logo {
+  text-align: center;
+  // padding-left: 50px;
+}
+
+.login-button {
+  text-align: center;
+}
+
 .login-container {
     padding: 50px;
-  
-    .ui-contents {
-      display: flex;
-      flex-direction: column;
-    }
+    background: rgb(103, 193, 126);
+
+  .ui-contents {
+    display: flex;
+    flex-direction: column;
+  }
   
     .ui-inputgroup {
       display: flex;
@@ -40,6 +58,12 @@
       width: 75%;
     }
   }
+
+  .g-signin2 {
+    margin: auto;
+    background: none;
+    border: none;
+  }
   
   .error-message-container{
     ::ng-deep .ui-messages{
@@ -57,4 +81,3 @@
       margin-top: 30px;
     }
   }
-  
