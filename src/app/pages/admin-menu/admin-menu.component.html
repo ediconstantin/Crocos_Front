@@ -1,4 +1,19 @@
 <app-header></app-header>
-<p-button label="Create New Quiz" (onClick)="createQuiz()"></p-button>
-<p-button label="Quiz List" (onClick)="quizList()"></p-button>
-<p-button label="Statistics" (onClick)="adminStatistics()"></p-button>
+<div class="p-grid">
+    <div class="p-col-12"></div>
+</div>
+<div class="p-grid spacer">
+    <div class="p-col-12"></div>
+</div>
+<div class="p-grid">
+    <div class="p-col-4">
+        <button pButton class="actionButton" type="button" label="Create New Quiz" (click)="createQuiz()"></button>
+    </div>
+    <div class="p-col-4">
+        <button pButton class="actionButton" type="button" label="Quiz List" (click)="quizList()"></button>
+    </div>
+    <div class="p-col-4">
+        <button pButton class="actionButton" type="button" label="Statistics" (click)="adminStatistics()"></button>
+    </div>
+</div>
+

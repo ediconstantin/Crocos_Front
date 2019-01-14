@@ -60,6 +60,20 @@
     }
 }
 
+.list-2-buttons {
+    .ui-picklist-target-controls,
+    .ui-picklist-source-controls,
+    .ui-picklist-buttons>.ui-picklist-buttons-cell>button[icon="pi pi-angle-double-right"],
+    .ui-picklist-buttons>.ui-picklist-buttons-cell>button[icon="pi pi-angle-double-left"] {
+        display: none;
+    }
+}
+
+button {
+    background: rgb(39, 45, 54);
+    border-color: rgb(39, 45, 54);
+}
+
 .error-message-container {
     width: 50%;
     margin: 0 auto;

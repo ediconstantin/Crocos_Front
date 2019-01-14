@@ -10,7 +10,6 @@
       </div>
       <div class="p-lg-4 p-md-2">
         <div class="control-view__selectbutton">
-          <!-- <p-selectButton [options]="viewModes" (onChange)="switchView($event)" [(ngModel)]="selectedViewMode"></p-selectButton> -->
         </div>
       </div>
       <div class="p-lg-4 p-md-6">
@@ -27,16 +26,17 @@
     <img src="../../../assets/images/logo.png" alt="Nairu Logo">
   </div>
 
-  <div class="p-col-3">
-    <div class="control-view__selectbuttonMobile">
-      <p-selectButton [options]="viewModes" (onChange)="switchView($event)" [(ngModel)]="selectedViewMode"></p-selectButton>
+  <div class="p-col-3 control-view__menu">
+    <div class="control-view__menubar">
+      <!-- <p-selectButton [options]="viewModes" (onChange)="switchView($event)" [(ngModel)]="selectedViewMode"></p-selectButton> -->
+      <p-menubar [model]="accountMenuItems"></p-menubar>
     </div>
   </div>
 
   <!-- Account Options -->
   <div class="p-col-2 control-view__menu">
     <div class="control-view__menubar">
-      <p-menubar [model]="accountMenuItems"></p-menubar>
+      <!-- <p-menubar [model]="accountMenuItems"></p-menubar> -->
     </div>
   </div>
 

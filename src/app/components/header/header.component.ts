@@ -36,9 +36,9 @@ export class HeaderComponent implements OnInit {
         label: 'Profile',
         command: () => {
           if (this.selectedUser === 'user') {
-            this.router.navigate(['student/profile']);
+            this.router.navigate(['student/profile/1']);
           } else if (this.selectedUser === 'admin') {
-            this.router.navigate(['admin/profile']);
+            this.router.navigate(['admin/profile/1']);
           }
         }
       },

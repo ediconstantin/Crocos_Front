@@ -1,0 +1,21 @@
+.p-grid {
+    text-align: center;
+}
+
+.spacer {
+    height: 20rem;
+}
+
+.actionButton {
+    height: 8rem;
+    width: 12rem;
+}
+
+button {
+    background: rgb(39, 45, 54);
+    border-color: rgb(39, 45, 54);
+
+    &:hover {
+        background: rgb(39, 45, 54);
+    }
+}
