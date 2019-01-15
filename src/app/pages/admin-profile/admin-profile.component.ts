@@ -31,4 +31,12 @@ export class AdminProfileComponent implements OnInit {
       console.log(err);
     });
   }
+
+  studentGrades() {
+    this.router.navigate(['admin/grades']);
+  }
+
+  studentStatistics() {
+    this.router.navigate(['admin/statistics']);
+  }
 }

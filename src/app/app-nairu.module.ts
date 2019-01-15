@@ -19,6 +19,9 @@ import { SelectQuizComponent } from './components/select-quiz/select-quiz.compon
 import { TestsListComponent } from './pages/tests-list/tests-list.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { LayoutPageComponent } from './components/layout-page/layout-page.component';
+import { SessionsListComponent } from './pages/sessions-list/sessions-list.component';
+import { AdminStatisticsComponent } from './pages/admin-statistics/admin-statistics.component';
+import { AdminGradesComponent } from './pages/admin-grades/admin-grades.component';
 
 // Services
 import { LoginService } from './services/login.service';
@@ -43,7 +46,10 @@ const exportedComponents = [
   SelectQuizComponent,
   TestsListComponent,
   QuizComponent,
-  LayoutPageComponent
+  LayoutPageComponent,
+  SessionsListComponent,
+  AdminStatisticsComponent,
+  AdminGradesComponent
 ];
 
 const exportedServices = [

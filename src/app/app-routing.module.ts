@@ -14,6 +14,9 @@ import { LayoutPageComponent } from './components/layout-page/layout-page.compon
 import { QUIZ_FORM_STATE } from './models/QUIZ_FORM_STATE';
 import { provideForRootGuard } from '@angular/router/src/router_module';
 import { TestsListComponent } from './pages/tests-list/tests-list.component';
+import { SessionsListComponent } from './pages/sessions-list/sessions-list.component';
+import { AdminStatisticsComponent } from './pages/admin-statistics/admin-statistics.component';
+import { AdminGradesComponent } from './pages/admin-grades/admin-grades.component';
 
 const routes: Routes = [
     {
@@ -62,6 +65,21 @@ const routes: Routes = [
             mode: QUIZ_FORM_STATE.VIEW
         },
         component: QuizFormComponent
+    },
+    {
+        path: 'admin/sessions',
+        pathMatch: 'full',
+        component: SessionsListComponent
+    },
+    {
+        path: 'admin/statistics',
+        pathMatch: 'full',
+        component: AdminStatisticsComponent
+    },
+    {
+        path: 'admin/grades',
+        pathMatch: 'full',
+        component: AdminGradesComponent
     },
     // Student
     {

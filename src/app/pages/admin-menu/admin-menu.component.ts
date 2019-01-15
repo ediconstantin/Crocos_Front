@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { MENU_ITEMS } from '../../models/STATIC_MENU_ITEMS';
-import { MenuItem } from 'primeng/components/common/menuitem';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -18,12 +16,19 @@ export class AdminMenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  // De schimbat atunci cand se adauga children components
   createQuiz() {
     this.router.navigate(['admin/quiz']);
   }
 
   quizList() {
     this.router.navigate(['admin/quiz-list']);
+  }
+
+  sessionsList() {
+    this.router.navigate(['admin/sessions']);
+  }
+
+  adminStatistics() {
+    this.router.navigate(['admin/statistics']);
   }
 }
