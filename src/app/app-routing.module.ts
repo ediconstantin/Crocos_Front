@@ -8,15 +8,17 @@ import { UserMenuComponent } from './pages/user-menu/user-menu.component';
 import { AdminProfileComponent } from './pages/admin-profile/admin-profile.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { QuizFormComponent } from './components/quiz-form/quiz-form.component';
-import { LayoutPageComponent } from './components/layout-page/layout-page.component';
-
-// Variables
-import { QUIZ_FORM_STATE } from './models/QUIZ_FORM_STATE';
-import { provideForRootGuard } from '@angular/router/src/router_module';
 import { TestsListComponent } from './pages/tests-list/tests-list.component';
 import { SessionsListComponent } from './pages/sessions-list/sessions-list.component';
 import { AdminStatisticsComponent } from './pages/admin-statistics/admin-statistics.component';
 import { AdminGradesComponent } from './pages/admin-grades/admin-grades.component';
+import { PublicListComponent } from './pages/public-list/public-list.component';
+import { StudentQstartComponent } from './pages/student-qstart/student-qstart.component';
+
+// Variables
+import { QUIZ_FORM_STATE } from './models/QUIZ_FORM_STATE';
+
+
 
 const routes: Routes = [
     {
@@ -91,6 +93,16 @@ const routes: Routes = [
         path: 'student/profile/:id',
         component: UserProfileComponent,
         pathMatch: 'full',
+    },
+    {
+        path: 'student/tests',
+        pathMatch: 'full',
+        component: PublicListComponent
+    },
+    {
+        path: 'student/enterCode',
+        pathMatch: 'full',
+        component: StudentQstartComponent
     }
 ];
 

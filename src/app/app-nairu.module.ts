@@ -23,11 +23,17 @@ import { SessionsListComponent } from './pages/sessions-list/sessions-list.compo
 import { AdminStatisticsComponent } from './pages/admin-statistics/admin-statistics.component';
 import { AdminGradesComponent } from './pages/admin-grades/admin-grades.component';
 import { QuestionAddComponent } from './components/question-add/question-add.component';
+import { StudentGradesComponent } from './pages/student-grades/student-grades.component';
+import { StudentQstartComponent } from './pages/student-qstart/student-qstart.component';
+import { PublicListComponent } from './pages/public-list/public-list.component';
+
 
 // Services
 import { LoginService } from './services/login.service';
 import { QuizService } from './services/quiz-service.service';
 import { UserProfileService } from './services/user-profile.service';
+import { AdminProfileService } from './services/admin-profile.service';
+
 
 // Interceptors
 import { AuthInterceptorService } from './services/auth-interceptor.service';
@@ -51,7 +57,10 @@ const exportedComponents = [
   SessionsListComponent,
   AdminStatisticsComponent,
   AdminGradesComponent,
-  QuestionAddComponent
+  QuestionAddComponent,
+  StudentGradesComponent,
+  StudentQstartComponent,
+  PublicListComponent
 ];
 
 const exportedServices = [
@@ -59,6 +68,7 @@ const exportedServices = [
   MessageService,
   QuizService,
   UserProfileService,
+  AdminProfileService,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
