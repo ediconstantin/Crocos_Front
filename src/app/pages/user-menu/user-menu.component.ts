@@ -18,7 +18,7 @@ export class UserMenuComponent implements OnInit {
   }
 
   enterCode() {
-    this.router.navigate(['student/enterTest']);
+    this.router.navigate(['student/enterCode']);
   }
 
 }
