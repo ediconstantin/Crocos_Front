@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { QuizService } from './quiz-service.service';
 
-describe('QuizServiceService', () => {
+describe('QuizService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [QuizService]

@@ -5,7 +5,7 @@ import { API_PATH } from '../models/API_PATH';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminProfileService {
+export class SessionService {
 
   constructor(private http: HttpClient) { }
 }

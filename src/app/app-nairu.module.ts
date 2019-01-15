@@ -33,13 +33,15 @@ import { LoginService } from './services/login.service';
 import { QuizService } from './services/quiz-service.service';
 import { UserProfileService } from './services/user-profile.service';
 import { AdminProfileService } from './services/admin-profile.service';
-
+import { QuestionService } from './services/question-service.service';
+import { SessionService } from './services/session.service';
 
 // Interceptors
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 // PrimeNG
 import { MessageService } from 'primeng/components/common/messageservice';
+
 
 const exportedComponents = [
   LoginPageComponent,
@@ -69,6 +71,8 @@ const exportedServices = [
   QuizService,
   UserProfileService,
   AdminProfileService,
+  QuestionService,
+  SessionService,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
