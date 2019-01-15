@@ -22,6 +22,7 @@ import { LayoutPageComponent } from './components/layout-page/layout-page.compon
 import { SessionsListComponent } from './pages/sessions-list/sessions-list.component';
 import { AdminStatisticsComponent } from './pages/admin-statistics/admin-statistics.component';
 import { AdminGradesComponent } from './pages/admin-grades/admin-grades.component';
+import { QuestionAddComponent } from './components/question-add/question-add.component';
 
 // Services
 import { LoginService } from './services/login.service';
@@ -49,7 +50,8 @@ const exportedComponents = [
   LayoutPageComponent,
   SessionsListComponent,
   AdminStatisticsComponent,
-  AdminGradesComponent
+  AdminGradesComponent,
+  QuestionAddComponent
 ];
 
 const exportedServices = [

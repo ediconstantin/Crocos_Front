@@ -94,33 +94,7 @@
         <div class="p-col-6">
           <p-checkbox name="groupname" value="1" [(ngModel)]="pageModel.public"></p-checkbox>
         </div>
-        <div class="p-col-4">
-          <h2>Categories</h2>
-        </div>
         <div class="p-col-8"></div>
-        <div class="p-col-8">
-          <p-pickList styleClass="list-2-buttons" [source]="list1" [target]="list2" [disabled]="STATE === STATES.VIEW">
-            <ng-template let-car pTemplate="item">
-              <div class="ui-helper-clearfix">
-                <div style="font-size:14px;float:right;margin:15px 5px 0 0">a - a - a</div>
-              </div>
-            </ng-template>
-          </p-pickList>
-        </div>
-        <div class="p-col-4"></div>
-        <div class="p-col-4">
-          <h2>Questions</h2>
-        </div>
-        <div class="p-col-8"></div>
-        <div class="p-col-8">
-          <p-pickList styleClass="list-2-buttons" [source]="list1" [target]="list2" [disabled]="STATE === STATES.VIEW">
-            <ng-template let-car pTemplate="item">
-              <div class="ui-helper-clearfix">
-                <div style="font-size:14px;float:right;margin:15px 5px 0 0">a - a - a</div>
-              </div>
-            </ng-template>
-          </p-pickList>
-        </div>
         <div class="p-col-4"></div>
         <div class="p-col-4">
           <button pButton type="button" label="Add new question" (click)="addNewQuestion()" [disabled]="STATE === STATES.VIEW"></button>
