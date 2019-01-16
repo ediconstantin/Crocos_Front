@@ -38,7 +38,7 @@ export class QuizService {
   }
 
   createTest = (quiz: Quiz) => {
-    return this.http.post(`${API_PATH.QUIZ_TEST}`, quiz);
+    return this.http.post(API_PATH.QUIZ_TEST, quiz);
   }
 
   cloneQuiz(cloneTestId: Number) {
@@ -49,7 +49,7 @@ export class QuizService {
     return this.http.put(API_PATH.QUIZ_UPDATE, body);
   }
 
-  remoteTest(testId: Number) {
+  removeTest(testId: Number) {
     return this.http.delete(`${API_PATH.QUIZ_DELETE}/${testId}`);
   }
 

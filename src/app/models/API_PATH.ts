@@ -6,7 +6,7 @@ export const API_PATH = {
     USER_REGISTER: `${environment.baseUrl}/register`,
     USER_INFO: `${environment.baseUrl}/user`,
     USER_PHOTO: `${environment.baseUrl}/user/photo/`,
-    QUIZ_TEST: `${environment.baseUrl}/test/public`,
+    QUIZ_TEST: `${environment.baseUrl}/test`,
     QUIZ_CLONE: `${environment.baseUrl}/test/clone`,
     QUIZ_UPDATE: `${environment.baseUrl}/test`,
     QUIZ_QUESTION_DELETE: `${environment.baseUrl}/test/question`,

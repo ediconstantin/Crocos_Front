@@ -32,8 +32,15 @@ export class LoginPageComponent implements OnInit {
     const profile = googleUser.getBasicProfile();
     this.token = googleUser.getAuthResponse().id_token;
 
-    this.loginService.googleAuth(this.token).subscribe((res) => {
+    this.loginService.googleAuth(this.token).subscribe(res => {
       console.log(res);
+      this.token = res.token;
+      console.log(this.token);
+      if (res.isProf === true) {
+        this.router.navigate(['admin']);
+      } else {
+        this.router.navigate(['student']);
+      }
     }, err => {
       console.log(err);
     });

@@ -92,12 +92,79 @@
           <label for="public">Is the quiz public?</label>
         </div>
         <div class="p-col-6">
-          <p-checkbox name="groupname" value="1" [(ngModel)]="pageModel.public"></p-checkbox>
+          <p-checkbox name="groupname" value="1" [(ngModel)]="pageModel.isPublic"></p-checkbox>
         </div>
         <div class="p-col-8"></div>
         <div class="p-col-4"></div>
         <div class="p-col-4">
-          <button pButton type="button" label="Add new question" (click)="addNewQuestion()" [disabled]="STATE === STATES.VIEW"></button>
+          <button pButton type="button" label="Add new question" (click)="questionContainer()" [disabled]="STATE === STATES.VIEW"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-grid" style="margin-left: 5px;" *ngIf="questions">
+    <div class="p-col-8">
+      <div class="p-grid data-line">
+        <div class="p-col-12"></div>
+        <div class="p-col-4">
+          <h2>Questions</h2>
+        </div>
+        <div class="p-col-6"></div>
+        <div class="p-col-4">
+          <label for="title">Question Text</label>
+        </div>
+        <div class="p-col-6">
+          <input pInputText id="title" [(ngModel)]="pageModel.name" [disabled]="STATE === STATES.VIEW">
+        </div>
+        <div class="p-col-4">
+          <label for="Description">Categories</label>
+        </div>
+        <div class="p-col-6">
+          <p-dropdown [options]="cateogries" [(ngModel)]="pageModel.categoryId" [disabled]="STATE === STATES.VIEW"></p-dropdown>
+        </div>
+        <div class="p-col-4">
+          <label for="duration">Choose a duration in seconds for each question
+          </label>
+          <i class="fa fa-info-circle tooltip" pTooltip="#"></i>
+        </div>
+        <div class="p-col-6">
+          <input pInputText id="duration" [(ngModel)]="pageModel.duration" [disabled]="STATE === STATES.VIEW">
+        </div>
+        <div class="p-col-4">
+          <label for="questionNumber">How many questions will the quiz have?</label>
+        </div>
+        <div class="p-col-6">
+          <input pInputText id="questionNumber" [(ngModel)]="pageModel.questionsNumber" [disabled]="STATE === STATES.VIEW">
+        </div>
+        <div class="p-col-4">
+          <label for="retries">How many retries does a student have?</label>
+        </div>
+        <div class="p-col-6">
+          <input pInputText id="retries" [(ngModel)]="pageModel.retries" [disabled]="STATE === STATES.VIEW">
+        </div>
+        <div class="p-col-4">
+          <label for="backwards">Can the student go to a previously answered question?</label>
+        </div>
+        <div class="p-col-6">
+          <p-checkbox name="groupname" value="1" (change)="backwardConfirmation($event, value)" [(ngModel)]="pageModel.backwards"></p-checkbox>
+        </div>
+        <div class="p-col-4">
+          <label for="feedback">Is feedback enabled for this quiz</label>
+        </div>
+        <div class="p-col-6">
+          <p-checkbox name="groupname" value="1" [(ngModel)]="pageModel.feedback"></p-checkbox>
+        </div>
+        <div class="p-col-4">
+          <label for="public">Is the quiz public?</label>
+        </div>
+        <div class="p-col-6">
+          <p-checkbox name="groupname" value="1" [(ngModel)]="pageModel.isPublic"></p-checkbox>
+        </div>
+        <div class="p-col-8"></div>
+        <div class="p-col-4"></div>
+        <div class="p-col-4">
+          <button pButton type="button" label="Add new question" (click)="questionContainer()" [disabled]="STATE === STATES.VIEW"></button>
         </div>
       </div>
     </div>
@@ -106,16 +173,7 @@
   <div class="p-grid footer" *ngIf="STATE !== STATES.VIEW">
     <div class="p-col-fixed centered edit-buttons">
       <button pButton type="button" label="Save" (click)="saveQuiz()"></button>
-      <button pButton type="button" label="Cancel" (click)="cancelConfirmation()"></button>
+      <button pButton type="button" label="Cancel" (click)="cancelQuiz()"></button>
     </div>
   </div>
 </div>
-
-<p-dialog header="Save Confirmation" [(visible)]="displaySaveModal" [modal]="true" [responsive]="true" [width]="350"
-  [minWidth]="350" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
-  <span>Are you sure you want to save the quiz as it is now?</span>
-  <p-footer>
-    <button type="button" pButton icon="fa fa-check" (click)="saveQuiz()" label="Yes"></button>
-    <button type="button" pButton icon="fa fa-close" (click)="displaySaveModal = false" label="No"></button>
-  </p-footer>
-</p-dialog>
