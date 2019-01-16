@@ -23,59 +23,20 @@ export class LoginPageComponent implements OnInit {
     window['onSignIn'] = (user) => ngZone.run(() => this.onSignIn(user));
   }
 
-  user = {
-    email: '',
-    password: ''
-  };
-
-  // O sa fie scoasa asta de aici
-  err = {
-    status: ''
-  };
-
-  @SessionStorage('user_token') idToken = '';
+  @SessionStorage('token') token = '';
   ngOnInit() {
   }
 
-  doLogin(username, password) {
-    // De apelat serviciul de login, meanwhile
-    if (username === 'admin' && password === 'admin') {
-      this.router.navigate(['admin']);
-    } else if (username === 'user' && password === 'user') {
-      this.router.navigate(['student']);
-    } else if (this.err instanceof HttpErrorResponse) {
-      switch (this.err.status) {
-        case STATUS.UNAUTHORIZED:
-          this.errorUnauthorized();
-          break;
-        case STATUS.FORBIDDEN:
-          this.errorForbidden();
-          break;
-        case STATUS.BAD_REQUEST:
-          this.errorRequest();
-          break;
-      }
-    } else {
-      this.errorUnauthorized();
-    }
-  }
 
   onSignIn(googleUser) {
     const profile = googleUser.getBasicProfile();
-    this.idToken = googleUser.getAuthResponse().id_token;
-    console.log(this.idToken);
-    console.log('ID: ' + profile.getId());
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail());
+    this.token = googleUser.getAuthResponse().id_token;
 
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:3015/login');
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onload = function () {
-      console.log('Signed in as: ' + xhr.responseText);
-    };
-    xhr.send('token=' + this.idToken);
+    this.loginService.googleAuth(this.token).subscribe((res) => {
+      console.log(res);
+    }, err => {
+      console.log(err);
+    });
   }
 
   errorUnauthorized() {
