@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  button {
+    background: rgb(39, 45, 54);
+    border-color: rgb(39, 45, 54)
+  }
+
+  .p-grid {
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(103, 193, 126);;
+    height: 5rem;
+    width: 100%;
+    position: relative;
+    margin: auto;
+  
+    .logo {  
+      text-align: center;
+  
+      img {
+        height: 5rem;
+        margin: 0 auto;
+      }
+    }
+  
+    .switch-label{
+      margin-left: 15px;
+      margin-right: 15px;
+      color: white;
+    }
+  
+    ::ng-deep .ui-selectbutton {
+      display: flex;
+      margin: 10px;
+    }
+  
+    .data-switch {
+      text-align: center;
+    }
+  
+    .search-group {
+      display: flex;
+      margin: 2px auto;
+    }
+  
+    ::ng-deep {
+      .ui-dropdown, p-dropdown {
+        min-width: 175px;
+      }
+    }
+  
+    .control-view {
+  
+      &__dropdown {
+        float:left;
+        margin-left: 0px;
+      }
+  
+      &__selectbuttonMobile {
+        display: none;
+      }
+  
+      &__menubar {
+        float: right;
+        margin-right: 10px;
+        margin-left: 100px;
+        padding: 0;
+        height: 45px;
+        width: 70px;
+      }
+    }
+  }
+  
+  @media only screen and (min-width: 600px) and (max-width: 1479px) {
+    .control-view {
+  
+      &__dropdown {
+        margin-left: -40px;
+        ::ng-deep .ui-dropdown, p-dropdown{
+            min-width: 90px;
+        }
+      }
+  
+      &__selectbutton {
+        display: none;
+      }
+  
+      &__selectbuttonMobile {
+        display: inline-block !important;
+        margin-left: 30px;
+      }
+  
+      &__menubar {
+        margin-left: 30px !important;
+        padding: 0;
+        height: 45px;
+        width: 70px;
+      }
+    }
+  }

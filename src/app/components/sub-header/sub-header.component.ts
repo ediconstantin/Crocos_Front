@@ -8,18 +8,6 @@ import { MenuItem } from 'primeng/components/common/menuitem';
 })
 export class SubHeaderComponent implements OnInit {
 
-  tabItems: MenuItem[] = [
-    {
-      label: 'First Year - Quizzes'
-    },
-    {
-      label: 'Second Year - Quizzes'
-    },
-    {
-      label: 'Third Year - Quizzes'
-    }
-  ];
-
   constructor() { }
 
   ngOnInit() {

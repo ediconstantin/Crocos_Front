@@ -12,4 +12,8 @@ export class StudentQstartComponent implements OnInit {
   ngOnInit() {
   }
 
+  goBack() {
+    history.go(-1);
+  }
+
 }

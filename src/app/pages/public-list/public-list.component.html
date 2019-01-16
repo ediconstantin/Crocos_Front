@@ -1,1 +1,24 @@
+<!-- Toast -->
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
+
 <app-header></app-header>
+<!-- Page Content -->
+<div class="main-content p-grid edit-guideline-page">
+
+  <!-- Page Content -->
+  <div class="p-col-12">
+    <div class="p-grid">
+      <div class="p-col-12 p-nogutter data-accordion">
+        <p-tabView>
+          <p-tabPanel header="Public Sessions">
+            <p-accordion [lazy]="true" [multiple]="false" header="No open sessions">
+              <p-accordionTab header="There are no open sessions!">
+                Check back later!
+              </p-accordionTab>
+            </p-accordion>
+          </p-tabPanel>
+        </p-tabView>
+      </div>
+    </div>
+  </div>
+</div>

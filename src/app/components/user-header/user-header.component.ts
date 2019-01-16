@@ -5,11 +5,11 @@ import { MenuItem } from 'primeng/api';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-user-header',
+  templateUrl: './user-header.component.html',
+  styleUrls: ['./user-header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class UserHeaderComponent implements OnInit {
 
   selectedUser: String;
   selectUser: MenuItem[] = [
@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
       items: [{
         label: 'Profile',
         command: () => {
-            this.router.navigate(['admin/profile/3']);
+            this.router.navigate(['student/profile/1']);
           }
       },
       {
@@ -42,6 +42,15 @@ export class HeaderComponent implements OnInit {
         command: () => {
           this.router.navigate(['/']);
         }
+        // command: () => {
+        //   this.userService.logout(this.userToken).subscribe(() => {
+        //     this.userToken = '';
+        //     this.router.navigate(['/']);
+        //   }, () => {
+        //     this.userToken = '';
+        //     this.router.navigate(['/']);
+        //   });
+        // }
       }]
     }];
 

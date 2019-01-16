@@ -9,11 +9,68 @@
   <div class="p-col-12">
     <div class="p-grid">
       <div class="p-col-12 p-nogutter data-accordion">
-        <app-sub-header></app-sub-header>
-        <p-accordion [lazy]="true" [multiple]="false">
-          <p-accordionTab>
-          </p-accordionTab>
-        </p-accordion>
+        <p-tabView>
+          <p-tabPanel header="First Year Quizes">
+            <p-accordion [lazy]="true" [multiple]="false" header="Test 1 - Retele de Calculatoare">
+              <p-accordionTab header="Test 1 - Bazele Programarii Calculatoarelor">
+                Question Number: 10 | Test Time: 30 | No Multiple Choices
+              </p-accordionTab>
+              <p-accordionTab header="Test 2 - Bazele Cercetarii Operationale">
+                Question Number: 15 | Test Time: 25 | Multiple Choices
+              </p-accordionTab>
+              <p-accordionTab header="Test 3 - Bazele Tehnologiei Informatiei">
+                Question Number: 15 | Test Time: 12 | No Multiple Choices
+              </p-accordionTab>
+              <p-accordionTab header="Test 4 - Economie">
+                Question Number: 13 | Test Time: 30 | No Multiple Choices
+              </p-accordionTab>
+            </p-accordion>
+          </p-tabPanel>
+          <p-tabPanel header="Second Year Quizes">
+            <p-accordion [lazy]="true" [multiple]="false" header="Test 1 - PAW">
+              <p-accordionTab header="Test 1 - Retele de Calculatoare">
+                Question Number: 10 | Test Time: 30 | No Multiple Choices
+              </p-accordionTab>
+              <p-accordionTab header="Test 2 - Java">
+                Question Number: 15 | Test Time: 25 | Multiple Choices
+              </p-accordionTab>
+              <p-accordionTab header="Test 3 - Structuri de Date">
+                Question Number: 12 | Test Time: 10 | No Multiple Choices
+              </p-accordionTab>
+              <p-accordionTab header="Test 4 - Programare Orientata Obiect">
+                Question Number: 15 | Test Time: 30 | Multiple Choices
+              </p-accordionTab>
+              <p-accordionTab header="Test 5 - Statistica Macroeconomica">
+                Question Number: 30 | Test Time: 45 | Multiple Choices
+              </p-accordionTab>
+              <p-accordionTab header="Test 6 - Probabilitati">
+                Question Number: 5 | Test Time: 45 | Multiple Choices
+              </p-accordionTab>
+              <p-accordionTab header="Test 7 - Baze de date">
+                Question Number: 40 | Test Time: 15 | Multiple Choices
+              </p-accordionTab>
+            </p-accordion>
+          </p-tabPanel>
+          <p-tabPanel header="Third Year Quizes">
+            <p-accordion [lazy]="true" [multiple]="false" header="Test 1 - Retele de Calculatoare">
+              <p-accordionTab header="Test 1 - Retele de Calculatoare">
+                Question Number: 10 | Test Time: 30 | No Multiple Choices
+              </p-accordionTab>
+              <p-accordionTab header="Test 2 - Tehnologii Web">
+                Question Number: 15 | Test Time: 25 | Multiple Choices
+              </p-accordionTab>
+              <p-accordionTab header="Test 3 - Analiza Datelor(Python)">
+                Question Number: 12 | Test Time: 10 | No Multiple Choices
+              </p-accordionTab>
+              <p-accordionTab header="Test 4 - Econometrie">
+                Question Number: 20 | Test Time: 30 | Multiple Choices
+              </p-accordionTab>
+              <p-accordionTab header="Test 5 - Dispozitive si aplicatii mobile">
+                Question Number: 10 | Test Time: 30 | Multiple Choices
+              </p-accordionTab>
+            </p-accordion>
+          </p-tabPanel>
+        </p-tabView>
       </div>
     </div>
   </div>

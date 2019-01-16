@@ -1,1 +1,15 @@
 <app-header></app-header>
+<div class="p-grid spacer">
+    <div class="p-col-12"></div>
+</div>
+<div class="p-grid">
+    <div class="p-col-4"></div>
+    <div class="p-col-4">
+        <div class="ui-inputgroup code-field">
+            <button pButton type="button" icon="pi pi-check" class="ui-button-success field"></button>
+            <input type="text" pInputText placeholder="Enter Code" class="field">
+            <button pButton type="button" icon="pi pi-close" class="ui-button-danger field" (click)="goBack()"></button>
+        </div>
+    </div>
+    <div class="p-col-4"></div>
+</div>

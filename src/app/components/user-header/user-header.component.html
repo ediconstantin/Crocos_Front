@@ -1,0 +1,43 @@
+<div class="p-grid">
+
+    <div class="p-col-5">
+      <div class="p-grid">
+        <div class="p-lg-4 p-md-4">
+          <div class="control-view__dropdown">
+            <!-- <p-dropdown [options]="guidelines" [(ngModel)]="selectedGuideline" optionLabel="title" (onChange)="changeGuideline($event)"></p-dropdown> -->
+            <button pButton type="button" icon="pi pi-arrow-left" (click)="goBack()"></button>
+          </div>
+        </div>
+        <div class="p-lg-4 p-md-2">
+          <div class="control-view__selectbutton">
+          </div>
+        </div>
+        <div class="p-lg-4 p-md-6">
+          <div class="control-view__splitbutton">
+            <!-- <p-splitButton #dbtn styleClass="ui-button-rounded ui-button-secondary" [model]="selectUser" label="SELECT USER"
+              appendTo="body"></p-splitButton> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+    <div class="p-col-2 logo">
+      <img src="../../../assets/images/logo.png" alt="Nairu Logo">
+    </div>
+  
+    <div class="p-col-3 control-view__menu">
+      <div class="control-view__menubar">
+        <!-- <p-selectButton [options]="viewModes" (onChange)="switchView($event)" [(ngModel)]="selectedViewMode"></p-selectButton> -->
+        <p-menubar [model]="accountMenuItems"></p-menubar>
+      </div>
+    </div>
+  
+    <!-- Account Options -->
+    <div class="p-col-2 control-view__menu">
+      <div class="control-view__menubar">
+        <!-- <p-menubar [model]="accountMenuItems"></p-menubar> -->
+      </div>
+    </div>
+  
+  </div>

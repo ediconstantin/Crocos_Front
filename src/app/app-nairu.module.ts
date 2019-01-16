@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AngularWebStorageModule } from 'angular-web-storage';
+import {ChartModule} from 'primeng/chart';
 
 // Components
 import { LoginPageComponent } from './pages/login-page/login-page.component';
@@ -26,7 +27,7 @@ import { QuestionAddComponent } from './components/question-add/question-add.com
 import { StudentGradesComponent } from './pages/student-grades/student-grades.component';
 import { StudentQstartComponent } from './pages/student-qstart/student-qstart.component';
 import { PublicListComponent } from './pages/public-list/public-list.component';
-
+import { UserHeaderComponent } from './components/user-header/user-header.component';
 
 // Services
 import { LoginService } from './services/login.service';
@@ -61,7 +62,8 @@ const exportedComponents = [
   QuestionAddComponent,
   StudentGradesComponent,
   StudentQstartComponent,
-  PublicListComponent
+  PublicListComponent,
+  UserHeaderComponent
 ];
 
 const exportedServices = [
@@ -80,8 +82,9 @@ const exportedServices = [
 ];
 
 @NgModule({
-    imports: [PrimengModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, HttpClientModule, AngularWebStorageModule],
-    exports: [...exportedComponents, PrimengModule],
+    // tslint:disable-next-line:max-line-length
+    imports: [PrimengModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, HttpClientModule, AngularWebStorageModule, ChartModule],
+    exports: [...exportedComponents, PrimengModule, ChartModule],
     providers: [...exportedServices],
     declarations: [...exportedComponents]
 })

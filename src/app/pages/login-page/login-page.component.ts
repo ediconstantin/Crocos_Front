@@ -1,9 +1,7 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import * as STATUS from 'http-status-codes';
-import { HttpErrorResponse } from '@angular/common/http';
-import { MessageService } from 'primeng/api';
 import { SessionStorage } from 'angular-web-storage';
+import { MessageService } from 'primeng/api';
 import { LoginService } from '../../services/login.service';
 
 @Component({
@@ -35,7 +33,6 @@ export class LoginPageComponent implements OnInit {
     this.loginService.googleAuth(this.token).subscribe(res => {
       console.log(res);
       this.token = res.token;
-      console.log(this.token);
       if (res.isProf === true) {
         this.router.navigate(['admin']);
       } else {

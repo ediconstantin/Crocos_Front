@@ -1,1 +1,43 @@
+<!-- Toast -->
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
+
 <app-header></app-header>
+<!-- Page Content -->
+<div class="main-content p-grid edit-guideline-page">
+
+  <!-- Page Content -->
+  <div class="p-col-12">
+    <div class="p-grid">
+      <div class="p-col-12 p-nogutter data-accordion">
+        <p-tabView>
+          <p-tabPanel header="Public Sessions">
+            <p-accordion [lazy]="true" [multiple]="false" header="Test 1 - Retele de Calculatoare">
+              <p-accordionTab header="S14 - Tehnologii Web - Pre Exam Quiz">
+                Question Number: 50 | Test Time: 50 | No Multiple Choices
+              </p-accordionTab>
+              <p-accordionTab header="S14 - Retele de Calculatoare - Lab">
+                Question Number: 5 | Test Time: 5 | No Multiple Choices
+              </p-accordionTab>
+            </p-accordion>
+          </p-tabPanel>
+          <p-tabPanel header="Sessions you have attended">
+            <p-accordion [lazy]="true" [multiple]="false" header="Test 1 - PAW">
+              <p-accordionTab header="Finished: Econometrie">
+                Grade: 29/30
+              </p-accordionTab>
+              <p-accordionTab header="Finished: Analiza Matematica">
+                Grade: 25/30
+              </p-accordionTab>
+              <p-accordionTab header="Finished: S13 - Tehnologiie Web">
+                Grade: 15/20
+              </p-accordionTab>
+              <p-accordionTab header="Finished S12 - Econometrie">
+                Grade: 13/22
+              </p-accordionTab>
+            </p-accordion>
+          </p-tabPanel>
+        </p-tabView>
+      </div>
+    </div>
+  </div>
+</div>

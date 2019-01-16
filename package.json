@@ -23,6 +23,7 @@
     "@types/moment": "^2.13.0",
     "angular-web-storage": "^3.0.0",
     "angularx-social-login": "^1.2.6",
+    "chart.js": "^2.7.3",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "google-auth-library": "^2.0.2",

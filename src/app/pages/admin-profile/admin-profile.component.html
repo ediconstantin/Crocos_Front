@@ -19,8 +19,8 @@
 
     <div class="p-col-fixed centered">
       <div class="control-buttons">
-        <button pButton type="button" label="Student Grades" class="ui-button-raised ui-button-rounded" (click)="studentGrades()"></button>
-        <button pButton type="button" label="Student Statistics" class="ui-button-raised ui-button-rounded" (click)="studentStatistics()"></button>
+        <button pButton type="button" disabled label="Student Grades" class="ui-button-raised ui-button-rounded" (click)="studentGrades()"></button>
+        <button pButton type="button" disabled label="Student Statistics" class="ui-button-raised ui-button-rounded" (click)="studentStatistics()"></button>
       </div>
     </div>
   </div>
@@ -37,28 +37,53 @@
           <label for="fName">First Name</label>
         </div>
         <div class="p-col-6">
-          <!-- <input [(ngModel)]='user.firstname'> -->
+          <label>Dan Andrei</label>
         </div>
         <div class="p-col-4">
           <label for="lName">Last Name</label>
         </div>
         <div class="p-col-6">
-          <!-- <input [(ngModel)]='user.lastname'> -->
+          <label>Ghinea</label>
         </div>
         <div class="p-col-4">
           <label for="email">E-Mail Address</label>
         </div>
         <div class="p-col-6">
-          <!-- <input [(ngModel)]='user.email'> -->
+          <label>ghineadan16@stud.ase.ro</label>
         </div>
         <div class="p-col-4">
           <h2>Tests Created</h2>
         </div>
         <div class="p-col-8"></div>
-        <div class="p-col-8">
-          <p-carousel [value]="items">
-            <ng-template let-item pTemplate="item">
-              Teste de aparut aici
+        <div class="p-col-12">
+          <p-carousel [value]="testsAttended">
+            <ng-template let-testsAttended pTemplate="testsAttended">
+              <div class="ui-grid ui-grid-responsive">
+                <div class="ui-grid-row">
+                  <div class="ui-grid-col-12"></div>
+                </div>
+                <div class="ui-grid-row">
+                  <div class="ui-grid-col-12">Test:</div>
+                  <div class="ui-grid-col-12">{{testsAttended.title}}</div>
+                </div>
+                <div class="ui-grid-row">
+                  <div class="ui-grid-col-12">Question No.</div>
+                  <div class="ui-grid-col-12">{{testsAttended.questions}}</div>
+                </div>
+                <div class="ui-grid-row">
+                  <div class="ui-grid-col-12">Is Public?</div>
+                  <div class="ui-grid-col-12">{{testsAttended.public}}</div>
+                </div>
+                <div class="ui-grid-row">
+                  <div class="ui-grid-col-12">Duration</div>
+                  <div class="ui-grid-col-12">{{testsAttended.duration}}</div>
+                </div>
+                <div class="ui-grid-row">
+                  <div class="ui-grid-col-12">
+                    <br>
+                  </div>
+                </div>
+              </div>
             </ng-template>
           </p-carousel>
         </div>
@@ -68,9 +93,26 @@
         </div>
         <div class="p-col-8"></div>
         <div class="p-col-8">
-          <p-carousel [value]="items">
-            <ng-template let-item pTemplate="item">
-              Teste de aparut aici
+          <p-carousel [value]="questions">
+            <ng-template let-questions pTemplate="questions">
+              <div class="ui-grid ui-grid-responsive">
+                <div class="ui-grid-row">
+                  <div class="ui-grid-col-12"></div>
+                </div>
+                <div class="ui-grid-row">
+                  <div class="ui-grid-col-12">Question:</div>
+                  <div class="ui-grid-col-12">{{questions.title}}</div>
+                </div>
+                <div class="ui-grid-row">
+                  <div class="ui-grid-col-12">Multiple:</div>
+                  <div class="ui-grid-col-12">{{questions.multiple}}</div>
+                </div>
+                <div class="ui-grid-row">
+                  <div class="ui-grid-col-12">
+                    <br>
+                  </div>
+                </div>
+              </div>
             </ng-template>
           </p-carousel>
         </div>
