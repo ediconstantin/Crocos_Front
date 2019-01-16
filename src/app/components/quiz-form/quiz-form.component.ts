@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { API_PATH } from '../../models/API_PATH';
 import { QUIZ_FORM_STATE } from '../../models/QUIZ_FORM_STATE';
 import { Observable } from 'rxjs';
 import { Quiz } from '../../models/QUIZ';
 import { QuizService } from '../../services/quiz-service.service';
 import { Message } from 'primeng/api';
-import * as moment from 'moment';
+import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'app-quiz-form',
@@ -20,7 +19,8 @@ export class QuizFormComponent implements OnInit {
   quizId: Number;
   errorMsgs: Message[];
   questions: Boolean = false;
-  openQuiz: Boolean = false;
+  categories: SelectItem[];
+  correctAnswer: SelectItem[];
   quizPageModel = {
     name: '',
     description: '',
@@ -37,14 +37,14 @@ export class QuizFormComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private quizService: QuizService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.STATE = this.route.snapshot.data.mode;
   }
 
-  questionContainer() {
-    this.questions = true;
+  addQuestions() {
+    this.router.navigate(['admin/addQuestion']);
   }
 
   cancelQuiz() {
@@ -60,9 +60,9 @@ export class QuizFormComponent implements OnInit {
   }
 
   saveQuiz() {
-   const quiz = this.quizPageModel;
+    const quiz = this.quizPageModel;
 
-   let saveFnc: (quiz: Quiz) => Observable<Object>;
+    let saveFnc: (quiz: Quiz) => Observable<Object>;
 
     switch (this.STATE) {
       case QUIZ_FORM_STATE.NEW:
@@ -70,12 +70,12 @@ export class QuizFormComponent implements OnInit {
         break;
     }
 
-   saveFnc(quiz).subscribe((res: Quiz) => {
-    console.log(res);
-    history.go(-1);
-   }, err => {
-     console.log(err);
-   });
+    saveFnc(quiz).subscribe((res: Quiz) => {
+      console.log(res);
+      history.go(-1);
+    }, err => {
+      console.log(err);
+    });
   }
 
   backwardConfirmation(e, value) {
@@ -85,5 +85,4 @@ export class QuizFormComponent implements OnInit {
       this.quizPageModel.backwards = 0;
     }
   }
-
 }

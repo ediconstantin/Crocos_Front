@@ -1,1 +1,90 @@
 <app-header></app-header>
+
+<div class="p-grid">
+  <div class="p-col-fixed centered error-message-container">
+    <div class="p-grid">
+      <div class="p-col-12">
+        <p-messages [(value)]="errorMsgs"></p-messages>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="article-form">
+  <div class="p-grid">
+    <div class="p-col-12">
+      <h2 class="page-title">Add new question</h2>
+    </div>
+  </div>
+
+
+  <div class="p-grid" id="questionForm" style="margin-left: 5px;">
+    <div class="p-col-8">
+      <div class="p-grid data-line">
+        <div class="p-col-12"></div>
+        <div class="p-col-4">
+          <h2>Question</h2>
+        </div>
+        <div class="p-col-6"></div>
+        <div class="p-col-4">
+          <label>Question Text</label>
+        </div>
+        <div class="p-col-6">
+          <input pInputText id="title" [ngModel]="questionPageModel.question">
+        </div>
+        <div class="p-col-4">
+          <label>Categories</label>
+        </div>
+        <div class="p-col-6">
+          <p-dropdown [options]="categories" [ngModel]="questionPageModel.categoryId"></p-dropdown>
+        </div>
+        <div class="p-col-4">
+          <label>Is the quiz open?</label>
+        </div>
+        <div class="p-col-6">
+          <p-checkbox name="openCheck" value="1" (onChange)="openCheck()"></p-checkbox>
+        </div>
+        <div class="p-col-4">
+          <label>Answer 1</label>
+        </div>
+        <div class="p-col-6">
+          <input pInputText id="questionNumber" [ngModel]="questionPageModel.ans1" [disabled]="openQuiz">
+        </div>
+        <div class="p-col-4">
+          <label>Answer 2</label>
+        </div>
+        <div class="p-col-6">
+          <input pInputText id="retries" [ngModel]="questionPageModel.ans2" [disabled]="openQuiz">
+        </div>
+        <div class="p-col-4">
+          <label>Answer 3</label>
+        </div>
+        <div class="p-col-6">
+          <input pInputText id="questionNumber" [ngModel]="questionPageModel.ans3" [disabled]="openQuiz">
+        </div>
+        <div class="p-col-4">
+          <label for="feedback">Answer 4</label>
+        </div>
+        <div class="p-col-6">
+          <input pInputText id="questionNumber" [ngModel]="questionPageModel.ans4" [disabled]="openQuiz">
+        </div>
+        <div class="p-col-4">
+          <label for="public">Correct Answer</label>
+        </div>
+        <div class="p-col-6">
+          <p-dropdown [options]="correctAnswer" [ngModel]="questionPageModel.answer5" [disabled]="openQuiz"></p-dropdown>
+        </div>
+        <div class="p-col-8"></div>
+        <div class="p-col-4"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-grid footer">
+    <div class="p-col-fixed centered edit-buttons">
+      <button pButton type="button" label="Save" (click)="saveQuestion()"></button>
+      <button pButton type="button" label="Cancel" (click)="cancelQuestion()"></button>
+    </div>
+  </div>
+</div>

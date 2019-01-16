@@ -97,72 +97,7 @@
         <div class="p-col-8"></div>
         <div class="p-col-4"></div>
         <div class="p-col-4">
-          <button pButton type="button" label="Add new question" (click)="questionContainer()" [disabled]="STATE === STATES.VIEW"></button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="p-grid" style="margin-left: 5px;" *ngIf="questions">
-    <div class="p-col-8">
-      <div class="p-grid data-line">
-        <div class="p-col-12"></div>
-        <div class="p-col-4">
-          <h2>Questions</h2>
-        </div>
-        <div class="p-col-6"></div>
-        <div class="p-col-4">
-          <label>Question Text</label>
-        </div>
-        <div class="p-col-6">
-          <input pInputText id="title" [disabled]="STATE === STATES.VIEW">
-        </div>
-        <div class="p-col-4">
-          <label>Categories</label>
-        </div>
-        <div class="p-col-6">
-          <p-dropdown [options]="cateogries" [disabled]="STATE === STATES.VIEW"></p-dropdown>
-        </div>
-        <div class="p-col-4">
-          <label >Is the quiz open?</label>
-        </div>
-        <div class="p-col-6">
-          <p-checkbox name="openCheck" value="1" (change)="openCheck()"></p-checkbox>
-        </div>
-        <div class="p-col-4">
-          <label>Answer 1</label>
-        </div>
-        <div class="p-col-6">
-          <input pInputText id="questionNumber" [disabled]="STATE === STATES.VIEW || openQuiz">
-        </div>
-        <div class="p-col-4">
-          <label >Answer 2</label>
-        </div>
-        <div class="p-col-6">
-          <input pInputText id="retries" [disabled]="STATE === STATES.VIEW || openQuiz">
-        </div>
-        <div class="p-col-4">
-          <label for="backwards">Answer 3</label>
-        </div>
-        <div class="p-col-6">
-          <input pInputText id="questionNumber" [disabled]="STATE === STATES.VIEW || openQuiz">
-        </div>
-        <div class="p-col-4">
-          <label for="feedback">Answer 4</label>
-        </div>
-        <div class="p-col-6">
-          <input pInputText id="questionNumber" [disabled]="STATE === STATES.VIEW || openQuiz">
-        </div>
-        <div class="p-col-4">
-          <label for="public">Correct Answer</label>
-        </div>
-        <div class="p-col-6">
-          <p-dropdown [options]="correctAnswers" [disabled]="STATE === STATES.VIEW || openQuiz"></p-dropdown>
-        </div>
-        <div class="p-col-8"></div>
-        <div class="p-col-4"></div>
-        <div class="p-col-4">
-          <button pButton type="button" label="Add new question" (click)="questionContainer()" [disabled]="STATE === STATES.VIEW"></button>
+          <button pButton type="button" label="Add new question" (click)="addQuestions(quizPageModel.questionsNumber)" [disabled]="STATE === STATES.VIEW"></button>
         </div>
       </div>
     </div>

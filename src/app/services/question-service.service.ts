@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { API_PATH } from '../models/API_PATH';
-import { QuestionModel } from '../models/QUESTION';
+import { Question, QuestionModel } from '../models/QUESTION';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +15,7 @@ export class QuestionService {
 
   // Get Question?
 
-  createQuestion(question: QuestionModel) {
+  createQuestion(question) {
     return this.http.post(API_PATH.QUESTION_CREATE, question);
   }
 
