@@ -48,13 +48,13 @@
           <label for="title">Title</label>
         </div>
         <div class="p-col-6">
-          <input pInputText id="title" [(ngModel)]="pageModel.name" [disabled]="STATE === STATES.VIEW">
+          <input pInputText id="title" [(ngModel)]="quizPageModel.name" [disabled]="STATE === STATES.VIEW">
         </div>
         <div class="p-col-4">
           <label for="Description">Description</label>
         </div>
         <div class="p-col-6">
-          <input pInputText id="Description" [(ngModel)]="pageModel.description" [disabled]="STATE === STATES.VIEW">
+          <input pInputText id="Description" [(ngModel)]="quizPageModel.description" [disabled]="STATE === STATES.VIEW">
         </div>
         <div class="p-col-4">
           <label for="duration">Choose a duration in seconds for each question
@@ -62,37 +62,37 @@
           <i class="fa fa-info-circle tooltip" pTooltip="#"></i>
         </div>
         <div class="p-col-6">
-          <input pInputText id="duration" [(ngModel)]="pageModel.duration" [disabled]="STATE === STATES.VIEW">
+          <input pInputText id="duration" [(ngModel)]="quizPageModel.duration" [disabled]="STATE === STATES.VIEW">
         </div>
         <div class="p-col-4">
           <label for="questionNumber">How many questions will the quiz have?</label>
         </div>
         <div class="p-col-6">
-          <input pInputText id="questionNumber" [(ngModel)]="pageModel.questionsNumber" [disabled]="STATE === STATES.VIEW">
+          <input pInputText id="questionNumber" [(ngModel)]="quizPageModel.questionsNumber" [disabled]="STATE === STATES.VIEW">
         </div>
         <div class="p-col-4">
           <label for="retries">How many retries does a student have?</label>
         </div>
         <div class="p-col-6">
-          <input pInputText id="retries" [(ngModel)]="pageModel.retries" [disabled]="STATE === STATES.VIEW">
+          <input pInputText id="retries" [(ngModel)]="quizPageModel.retries" [disabled]="STATE === STATES.VIEW">
         </div>
         <div class="p-col-4">
           <label for="backwards">Can the student go to a previously answered question?</label>
         </div>
         <div class="p-col-6">
-          <p-checkbox name="groupname" value="1" (change)="backwardConfirmation($event, value)" [(ngModel)]="pageModel.backwards"></p-checkbox>
+          <p-checkbox name="groupname" value="1" (change)="backwardConfirmation($event, value)" [(ngModel)]="quizPageModel.backwards"></p-checkbox>
         </div>
         <div class="p-col-4">
           <label for="feedback">Is feedback enabled for this quiz</label>
         </div>
         <div class="p-col-6">
-          <p-checkbox name="groupname" value="1" [(ngModel)]="pageModel.feedback"></p-checkbox>
+          <p-checkbox name="groupname" value="1" [(ngModel)]="quizPageModel.feedback"></p-checkbox>
         </div>
         <div class="p-col-4">
           <label for="public">Is the quiz public?</label>
         </div>
         <div class="p-col-6">
-          <p-checkbox name="groupname" value="1" [(ngModel)]="pageModel.isPublic"></p-checkbox>
+          <p-checkbox name="groupname" value="1" [(ngModel)]="quizPageModel.isPublic"></p-checkbox>
         </div>
         <div class="p-col-8"></div>
         <div class="p-col-4"></div>
@@ -112,54 +112,52 @@
         </div>
         <div class="p-col-6"></div>
         <div class="p-col-4">
-          <label for="title">Question Text</label>
+          <label>Question Text</label>
         </div>
         <div class="p-col-6">
-          <input pInputText id="title" [(ngModel)]="pageModel.name" [disabled]="STATE === STATES.VIEW">
+          <input pInputText id="title" [disabled]="STATE === STATES.VIEW">
         </div>
         <div class="p-col-4">
-          <label for="Description">Categories</label>
+          <label>Categories</label>
         </div>
         <div class="p-col-6">
-          <p-dropdown [options]="cateogries" [(ngModel)]="pageModel.categoryId" [disabled]="STATE === STATES.VIEW"></p-dropdown>
+          <p-dropdown [options]="cateogries" [disabled]="STATE === STATES.VIEW"></p-dropdown>
         </div>
         <div class="p-col-4">
-          <label for="duration">Choose a duration in seconds for each question
-          </label>
-          <i class="fa fa-info-circle tooltip" pTooltip="#"></i>
+          <label >Is the quiz open?</label>
         </div>
         <div class="p-col-6">
-          <input pInputText id="duration" [(ngModel)]="pageModel.duration" [disabled]="STATE === STATES.VIEW">
+          <p-checkbox name="openCheck" value="1" (change)="openCheck()"></p-checkbox>
         </div>
         <div class="p-col-4">
-          <label for="questionNumber">How many questions will the quiz have?</label>
+          <label>Answer 1</label>
         </div>
         <div class="p-col-6">
-          <input pInputText id="questionNumber" [(ngModel)]="pageModel.questionsNumber" [disabled]="STATE === STATES.VIEW">
+          <input pInputText id="questionNumber" [disabled]="STATE === STATES.VIEW || openQuiz">
         </div>
         <div class="p-col-4">
-          <label for="retries">How many retries does a student have?</label>
+          <label >Answer 2</label>
         </div>
         <div class="p-col-6">
-          <input pInputText id="retries" [(ngModel)]="pageModel.retries" [disabled]="STATE === STATES.VIEW">
+          <input pInputText id="retries" [disabled]="STATE === STATES.VIEW || openQuiz">
         </div>
         <div class="p-col-4">
-          <label for="backwards">Can the student go to a previously answered question?</label>
+          <label for="backwards">Answer 3</label>
         </div>
         <div class="p-col-6">
-          <p-checkbox name="groupname" value="1" (change)="backwardConfirmation($event, value)" [(ngModel)]="pageModel.backwards"></p-checkbox>
+          <input pInputText id="questionNumber" [disabled]="STATE === STATES.VIEW || openQuiz">
         </div>
         <div class="p-col-4">
-          <label for="feedback">Is feedback enabled for this quiz</label>
+          <label for="feedback">Answer 4</label>
         </div>
         <div class="p-col-6">
-          <p-checkbox name="groupname" value="1" [(ngModel)]="pageModel.feedback"></p-checkbox>
+          <input pInputText id="questionNumber" [disabled]="STATE === STATES.VIEW || openQuiz">
         </div>
         <div class="p-col-4">
-          <label for="public">Is the quiz public?</label>
+          <label for="public">Correct Answer</label>
         </div>
         <div class="p-col-6">
-          <p-checkbox name="groupname" value="1" [(ngModel)]="pageModel.isPublic"></p-checkbox>
+          <p-dropdown [options]="correctAnswers" [disabled]="STATE === STATES.VIEW || openQuiz"></p-dropdown>
         </div>
         <div class="p-col-8"></div>
         <div class="p-col-4"></div>

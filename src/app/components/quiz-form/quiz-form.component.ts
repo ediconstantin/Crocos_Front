@@ -20,7 +20,8 @@ export class QuizFormComponent implements OnInit {
   quizId: Number;
   errorMsgs: Message[];
   questions: Boolean = false;
-  pageModel = {
+  openQuiz: Boolean = false;
+  quizPageModel = {
     name: '',
     description: '',
     duration: null,
@@ -59,7 +60,7 @@ export class QuizFormComponent implements OnInit {
   }
 
   saveQuiz() {
-   const quiz = this.pageModel;
+   const quiz = this.quizPageModel;
 
    let saveFnc: (quiz: Quiz) => Observable<Object>;
 
@@ -79,9 +80,9 @@ export class QuizFormComponent implements OnInit {
 
   backwardConfirmation(e, value) {
     if (e.target.checked) {
-      this.pageModel.backwards = e.target.value;
+      this.quizPageModel.backwards = e.target.value;
     } else {
-      this.pageModel.backwards = 0;
+      this.quizPageModel.backwards = 0;
     }
   }
 
