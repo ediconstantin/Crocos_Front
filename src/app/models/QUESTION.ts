@@ -1,6 +1,6 @@
 export class Question {
     id?: Number;
-    title: String;
+    question: String;
     answer1: String;
     answer2: String;
     answer3: String;
@@ -10,6 +10,8 @@ export class Question {
     multiple: Boolean;
     open: Boolean;
     duration: Number;
+    feedback: String;
+    categoryId: Number;
 }
 
 export class QuestionModel extends Question {
@@ -20,7 +22,7 @@ export class QuestionModel extends Question {
             question = new Question();
         }
         this.id = question.id || null;
-        this.title = question.title || null;
+        this.question = question.question || null;
         this.answer1 = question.answer1 || null;
         this.answer2 = question.answer2 || null;
         this.answer3 = question.answer3 || null;
@@ -30,12 +32,14 @@ export class QuestionModel extends Question {
         this.multiple = question.multiple || null;
         this.open = question.open || null;
         this.duration = question.duration || null;
+        this.categoryId = question.categoryId || 1;
+        this.feedback = question.feedback || '';
     }
 
     toQuestion = () => {
         const question = new Question();
         question.id = this.id;
-        question.title = this.title;
+        question.question = this.question;
         question.answer1 = this.answer1;
         question.answer2 = this.answer2;
         question.answer3 = this.answer3;
@@ -45,6 +49,8 @@ export class QuestionModel extends Question {
         question.multiple = this.multiple;
         question.open = this.open;
         question.duration = this.duration;
+        question.categoryId = this.categoryId;
+        question.feedback = this.feedback;
 
         return question;
     }

@@ -9,14 +9,6 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  login(username, password) {
-    const body = {
-      email: username,
-      password: password
-    };
-    return this.http.post(API_PATH.USER_LOGIN, body);
-  }
-
   googleAuth(idToken) {
     const options = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -25,7 +17,7 @@ export class LoginService {
     return this.http.post(`${API_PATH.USER_LOGIN}`, options);
   }
 
-  logout(token: String) {
-    return this.http.post(API_PATH.USER_LOGOUT, {});
+  register(registerData) {
+    return this.http.post(API_PATH.USER_REGISTER, registerData);
   }
 }

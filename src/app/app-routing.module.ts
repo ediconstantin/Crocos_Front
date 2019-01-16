@@ -14,9 +14,11 @@ import { AdminStatisticsComponent } from './pages/admin-statistics/admin-statist
 import { AdminGradesComponent } from './pages/admin-grades/admin-grades.component';
 import { PublicListComponent } from './pages/public-list/public-list.component';
 import { StudentQstartComponent } from './pages/student-qstart/student-qstart.component';
+import { QuestionAddComponent } from './components/question-add/question-add.component';
 
 // Variables
 import { QUIZ_FORM_STATE } from './models/QUIZ_FORM_STATE';
+
 
 
 
@@ -67,6 +69,11 @@ const routes: Routes = [
             mode: QUIZ_FORM_STATE.VIEW
         },
         component: QuizFormComponent
+    },
+    {
+        path: 'admin/addQuestion',
+        pathMatch: 'full',
+        component: QuestionAddComponent
     },
     {
         path: 'admin/sessions',

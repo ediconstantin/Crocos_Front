@@ -32,7 +32,6 @@ import { PublicListComponent } from './pages/public-list/public-list.component';
 import { LoginService } from './services/login.service';
 import { QuizService } from './services/quiz-service.service';
 import { UserProfileService } from './services/user-profile.service';
-import { AdminProfileService } from './services/admin-profile.service';
 import { QuestionService } from './services/question-service.service';
 import { SessionService } from './services/session.service';
 
@@ -70,7 +69,6 @@ const exportedServices = [
   MessageService,
   QuizService,
   UserProfileService,
-  AdminProfileService,
   QuestionService,
   SessionService,
   {

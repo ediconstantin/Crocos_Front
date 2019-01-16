@@ -40,7 +40,7 @@ export class QuizFormComponent implements OnInit {
   }
 
   addNewQuestion() {
-
+    this.router.navigate(['admin/addQuestion']);
   }
 
   cancelQuiz() {
